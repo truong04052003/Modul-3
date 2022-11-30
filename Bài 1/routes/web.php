@@ -60,3 +60,26 @@ Route::post('/xu-ly-calculator', function (Request  $request) {
     $discount_amount = $list_price * $discount_percent * 0.1;
     echo $discount_amount;
 });
+
+//bài 2 từ điển 
+//hiện thi form từ điển 
+Route::get('/dictionary', function () {
+    return view('dictionary');
+});
+
+// xử lý từ điển 
+Route::post('/xu-ly-dictionary', function (Request $request) {
+    // dd($request->all());
+    // die();
+
+    $dictionary = $request->dictionary;
+    $eng = ["hello", "goodbye", "haha"];
+    $vie = ["xin chào", "tạm biệt", "anh khang tào lao"];
+    foreach ( $eng as $key => $value) {
+        if ($dictionary == $value) {
+            $dictionary = $vie[$key];
+            echo $dictionary;
+            break;
+        }
+    }
+});
