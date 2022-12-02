@@ -61,7 +61,7 @@ Route::post('/xu-ly-calculator', function (Request  $request) {
     echo $discount_amount;
 });
 
-//bài 2 từ điển 
+//bài tập 2 từ điển 
 //hiện thi form từ điển 
 Route::get('/dictionary', function () {
     return view('dictionary');
@@ -83,3 +83,28 @@ Route::post('/xu-ly-dictionary', function (Request $request) {
         }
     }
 });
+
+
+//Bài 2
+Route::get('hello/{name?}/{age?}',function($name='laravel',$age=0){
+    return 'hello ' . $name .' '. 'age' .' ' . $age;
+})->where(['name' => '[A-Za-z]+', 'age' => '[0-9]+']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
