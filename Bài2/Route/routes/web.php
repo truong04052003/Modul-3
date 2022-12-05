@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CaculaterController;
 use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -81,11 +82,19 @@ Route::get('text_route', function () {
 Route::resource('photos', PhotoController::class);
 
 Route::get('link_vip/{age}', function ($age) {
-    echo "trang link vip";  
+    echo "trang link vip";
 })->middleware('checkage');
 
 Route::get('Link_normal', function () {
     echo "trang link bình thg";
 });
+
 //email
 Route::post('/check-email', [UserController::class, 'validationEmail'])->name('checkEmail');
+
+
+//calculation
+Route::get('/calculation', function () {
+    return view('caculater');
+});
+Route::post('caculater', [CaculaterController::class, 'tinhController'])->name('caculater');
