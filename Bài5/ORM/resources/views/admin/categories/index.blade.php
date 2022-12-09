@@ -1,4 +1,5 @@
 @extends('admin.layouts.main')
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,13 +14,11 @@
 @section('content')
 
     <table class="table">
-        <a href="{{route('products.create')}}" class="btn btn-info">Thêm sản phẩm</a>
+        <a href="{{route('categories.create')}}" class="btn btn-danger">Thêm thể loại</a>
         <thead>
           <tr>
             <th scope="col">id</th>
             <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">category_id</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -28,14 +27,11 @@
           <tr>
             <th scope="row">{{++$key}}</th>
             <td>{{$item['name']}}</td>
-            <td>{{$item['price']}}</td>
-            <td>{{$item['category_id']}}</td>
-           
             <td>
-              <form action="{{route('products.destroy',[$item->id])}}" method="post">
+              <form action="{{route('categories.destroy',[$item->id])}}" method="post">
                 @method('DELETE')
                 @csrf
-                <a href="{{route('products.edit',[$item->id])}}" class="btn btn-primary">Edit</a>
+                <a href="{{route('categories.edit',[$item->id])}}" class="btn btn-primary">Edit</a>
                 <button onclick="return confirm('Bạn có chắc chắn xóa không?');" class="btn btn-danger">Delete</button>
             </form>
             </td>

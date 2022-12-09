@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <div class="container-fluid px-4">
 @section('content')
-    <form action="{{route('products.update' ,[$product->id])}}" method="post">
+    <form action="{{route('categories.update',[$category->id])}}" method="post">
       @method('PUT')
         @csrf
         <div>
@@ -19,19 +19,11 @@
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Name</label>
-          <input type="text" class="form-control" name="name" value="{{$product->name}}" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Price</label>
-          <input type="text" class="form-control" name="price" value="{{$product->price}}">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">category_id</label>
-          <input type="text" name="category_id" class="form-control" value="{{$product->category_id}}">
+          <input type="text" class="form-control" name="name" value="{{$category->name}}" aria-describedby="emailHelp">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a class="btn btn-danger btn-xs" href="{{route('products.index')}}">Cancel</a>
-        <a href="{{route('products.index')}}" class="btn btn-primary">Back</a>
+        <a class="btn btn-danger btn-xs" href="{{route('categories.index')}}">Cancel</a>
+        <a href="{{route('categories.index')}}" class="btn btn-primary">Back</a>
       </form>
       
 

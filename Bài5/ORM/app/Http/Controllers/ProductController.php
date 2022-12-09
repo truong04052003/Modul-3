@@ -25,7 +25,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('products.create');
+        $items = Category::all();
+        return view('admin.products.create' , compact('items'));
     }
     
 
@@ -35,8 +36,6 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->category_id  = $request->category_id ;
-        $product->created_at = $request->created_at;
-        $product->updated_at = $request->updated_at;
         $product->save();
 
         return redirect()->route('products.index');
@@ -53,24 +52,26 @@ class ProductController extends Controller
     }
 
   
-    public function edit($id)
-    {
-        $item = Product::find($id);
-        dd($item);
-        
+    public function edit($id){
+        $product = Product::find($id);
+        // // dd($product);
+        return view('admin.products.edit', compact('product'));
+
     }
     public function update(Request $request, $id)
     {
-        $item = Product::find($id);
-        // $item = DB::table('products')->where('id','=',$id)->first();
-        //select * from products where id = 1
-        dd($item);
-        //http://127.0.0.1:8000/products/1
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
+        $product->save();
+        return redirect()->route('products.index');
     }
 
   
     public function destroy($id)
     {
-        //
+        Product::find($id)->delete();
+        return redirect()->route('products.index');
     }
 }
