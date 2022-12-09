@@ -32,7 +32,15 @@ Route::get('/dangky', function () {
     return view('admin.logins.dangky');
 });
 
-Route::get('/login', [LoginController::class, 'login'])->name('logins.login');
+//đăng nhập
+Route::get('/viewlogin', [LoginController::class, 'viewlogin'])->name('viewlogin');
+Route::post('/checklogin', [LoginController::class, 'checklogin'])->name('admin.checklogin');
+//đăng ký
+Route::get('/register', [LoginController::class, 'register'])->name('admin.register');
+Route::post('/checkregister', [LoginController::class, 'checkregister'])->name('admin.checkregister');
+
+Route::post('/shoplogout', [LoginController::class, 'logout'])->name('adminlogout');
+
 
 //PRODUCT===========
 Route::prefix('products')->group(function () {
@@ -45,7 +53,6 @@ Route::prefix('products')->group(function () {
     Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-    Route::delete('/', [ProductController::class, 'product_trash'])->name('products.trash');
 });
 //CATEGORY===================
 Route::prefix('categories')->group(function () {
@@ -83,7 +90,7 @@ Route::prefix('product_codes')->group(function () {
     Route::delete('/{id}', [ProductCodeController::class, 'destroy'])->name('product_codes.destroy');
 });
 
-    
+
 
 
 Route::get('hasOne', function () {

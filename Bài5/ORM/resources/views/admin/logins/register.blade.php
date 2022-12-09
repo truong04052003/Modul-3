@@ -189,10 +189,11 @@ body {
             <label>Password</label>
           </div>
           <div class="user-box">
-            <input type="Enterthepassword" name="" required="">
+            <input type="password" name="" required="">
             <label>Enter the password</label>
           </div>
-          <a href="#">
+          
+          <a href="{{route('viewlogin')}}">
             <span></span>
             <span></span>
             <span></span>
