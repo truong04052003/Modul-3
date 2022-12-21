@@ -111,3 +111,35 @@ Route::get('/12', function () {
         ->get();
     dd($sql);
 });
+
+Route::get('cau2.14', function () {
+    $items = DB::table('nhan_viens')
+        ->select('HO', 'TEN', 'NGAYSINH',)
+        ->groupBy('HO', 'TEN', 'NGAYSINH')
+        ->havingRaw('COUNT(*) > 1')
+        ->get();
+    dd($items);
+});
+Route::get('cau2.16', function () {
+    $items = DB::table('khach_hangs')
+        ->select('khach_hangs.TENCONGTY', 'khach_hangs.TENGIAODICH', 'khach_hangs.DIACHI', 'khach_hangs.DIENTHOAI', 'nha_cung_caps.TENCONGTY', 'nha_cung_caps.TENGIAODICH', 'nha_cung_caps.DIACHI', 'nha_cung_caps.DIENTHOAI')
+        ->join('nha_cung_caps', 'nha_cung_caps.DIACHI', '=', 'khach_hangs.DIACHI')
+        ->get();
+    dd($items);
+});
+Route::get('cau2.17', function () {
+    $items = DB::table('mathang')
+        ->select('mathang.*')
+        ->leftJoin('chitietdathang', 'mathang.MAHANG', '=', 'chitietdathang.MAHANG')
+        ->where('chitietdathang.MAHANG', '=', null)
+        ->get();
+    dd($items);
+});
+Route::get('cau2.18', function () {
+    $items = DB::table('nhan_viens')
+        ->select('nhan_viens.*')
+        ->leftJoin('don_dat_hangs', 'nhan_viens.MANHANVIEN', '=', 'don_dat_hangs.MANHANVIEN')
+        ->where('don_dat_hangs.SOHOADON', '=', null)
+        ->get();
+    dd($items);
+});

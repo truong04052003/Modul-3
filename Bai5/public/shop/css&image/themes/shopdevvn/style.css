@@ -1,0 +1,512 @@
+/*
+Theme Name: DienMay2
+Theme URI: https://muatheme.com
+Author: MuaTheme.com
+Author URI: https://muatheme.com
+Description: Theme Wordpress dien may
+Text Domain: devvn
+*/
+@font-face{
+    font-family:'Roboto Condensed';
+	font-display:swap;
+    src:url(fonts/baomoi-light-2.0.2.woff2) format("woff2"),url(fonts/baomoi-light-2.0.2.woff) format("woff");
+}
+@font-face{
+    font-family:'Roboto Condensed';
+    src:url(fonts/baomoi-light-italic-2.0.2.woff2) format("woff2"),url(fonts/baomoi-light-italic-2.0.2.woff) format("woff");
+    font-style:italic;
+		font-display:swap;
+}
+@font-face{
+    font-family:'Roboto Condensed';
+		font-display:swap;
+    src:url(fonts/baomoi-regular-2.0.2.woff2) format("woff2"),url(fonts/baomoi-regular-2.0.2.woff) format("woff");
+    font-weight:700;
+		
+}
+@font-face{
+    font-family:'Roboto Condensed';
+    src:url(fonts/baomoi-regular-2.0.2.woff2) format("woff2"),url(fonts/baomoi-regular-2.0.2.woff) format("woff");
+    font-weight:700;
+    font-style:italic;
+	font-display:swap;
+}
+.product .woocommerce-tabs ul li table{
+	
+	width:100% !important;
+}
+
+.shop_loop_box a.add_to_cart_button, .woocommerce ul.products li.product .button.product_type_simple , .woocommerce ul.products li.product .button.product_type_external {
+   
+	width:160px;
+	text-align:center;
+	font-weight:normal;
+}
+.woocommerce ul.products li.product .button.product_type_simple , .woocommerce ul.products li.product .button.product_type_external{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    margin: 0;
+}
+.woocommerce ul.products li.product:hover .button.product_type_simple , .woocommerce ul.products li.product:hover .button.product_type_external{
+	transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+	visibility:visible;
+	opacity: 1;
+	bottom: 10px;
+	
+}
+#menu-main-menu > li.menu-item-has-children:after {
+    content: "\f0d7";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: #ffffff;
+    font-size: 13px;
+    
+    position: absolute;
+    top: 0px;
+    right: 6px;
+}
+#menu-main-menu > li.menu-item-has-children:hover:after,#menu-main-menu > li.current-menu-item.menu-item-has-children:after {
+	
+	color: #6D6D6D !important;
+}
+.fb_iframe_widget_fluid_desktop, .fb_iframe_widget_fluid_desktop span, .fb_iframe_widget_fluid_desktop iframe {
+            max-width: 100% !important;
+            width: 100% !important;
+ }
+
+.techslide .flickity-prev-next-button {
+    background-color: transparent !important;
+    box-shadow: inherit !important;
+	opacity: 0;
+}
+
+.techslide {
+    display: block;
+    width: 100%;
+    float: left;
+    margin-right: 0px !important;
+	
+
+}
+.techslide .carousel {
+    background: #FAFAFA;
+}
+.techslide .carousel .carousel-nav {
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+.techslide .carousel {
+    background: #EEE;
+    opacity:0;
+}
+.techslide .carousel.flickity-enabled {
+	 opacity:1;
+}
+.techslide .carousel-cell {
+    width: 100%;
+    counter-increment: carousel-cell;
+}
+.techslide .carousel-cell {
+position: relative;
+    overflow: hidden;
+}
+.techslide .carousel-cell.is-selected.is-nav-selected {
+    font-weight: 700;
+border-bottom: 4px solid red;
+padding-bottom: 6px;
+}
+.techslide .carousel-nav .carousel-cell {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    height: 55px;
+    width: 20% !important;
+    font-size: 13px;
+    line-height: 15px;
+    color: #4a4a4a;
+    background-color: #fff;
+}
+.techslide:hover .flickity-prev-next-button {
+   opacity: 1;
+}
+.techslide .carousel-nav .carousel-cell:after {
+    content: '';
+    float: left;
+    height: 35px;
+    border-left: 1px solid #f0f0f0;
+    position: absolute;
+    top: 8px;
+    left: 0;
+}
+.techslide  .carousel-cell img {
+height: 320px;
+    right: 0;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    object-position: 50% 50%;
+    object-fit: cover;
+    font-family: 'object-fit: cover;';
+}
+
+
+.techslide .flickity-prev-next-button svg {
+    height: 62px;
+    width: 32px;
+    border-radius: 2px;
+    background-color: rgba(0,0,0,.5);
+    box-shadow: 0 7px 10px 0 rgba(72,139,216,.2);
+    border: none;
+    color: #fff;
+}
+.thiet-bi, .hosting-nen-dung{
+   margin-top:10px;
+  
+}
+.thiet-bi p, .hosting-nen-dung h4{
+        color: #e67e22;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+}
+.khuyenmaihosting
+ {
+
+    margin: 0px;
+    padding: 0px;
+  
+    
+ text-align: left;
+}
+.devvn_is_tragop{
+    
+    position: relative;
+    bottom:0px;
+    left:0px;
+}
+.khuyenmaihosting ul
+{
+  list-style-type: none;
+  padding:0px;
+  margin:0px;
+}
+.khuyenmaihosting ul li:before {
+    content: "•"; 
+    padding-right: 5px;
+    color: #1E8CBE; 
+}	
+	.mybutton {
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  
+  padding-right:30px;
+   padding-left:70px;
+  position: relative;
+  background-color:rgb(41,127,184);
+  
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  font-size: 15px !important;
+  text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+-ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true)";zoom:1;
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true);
+
+  -moz-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true)";
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true);
+}
+
+.mybutton span {
+  position: absolute;
+  left: 0;
+  width: 50px;
+  background-color:rgba(0,0,0,0.5);
+  text-align: center;
+
+}
+
+.mybutton:hover span, .mybutton.active span {
+  background-color:rgb(0,102,26) !important;
+  border-right: 1px solid  rgba(0,0,0,0.3) !important;
+}
+.mybutton:active, .mybutton:visited, .mybutton:link, .mybutton:hover {
+	color: #ffffff !important;
+}
+.mybutton:active {
+  margin-top: 2px;
+  margin-bottom: 13px;
+
+  -moz-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+-webkit-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+-ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true)";
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true);
+}
+
+.mybutton.orange, .mybutton.detail {
+  background: #FF7F00;
+}
+article .entry-content .button {
+ background:#0D97DB;
+ width:150px;
+}
+article .entry-content .button:link, article .entry-content .button:active,
+article .entry-content .button:visited 
+{
+    color:#ffffff !important;
+}
+.mybutton.purple, .mybutton.demo {
+  background: #8e44ad;
+}
+
+.mybutton.turquoise {
+  background: #1abc9c;
+}
+
+.mybutton.red {
+  background: #e74c3c;
+}
+	.banggiatenmien {
+		 margin: 0;
+    width: 100%;
+	}
+	.banggiatenmien table {
+    margin: 0;
+    width: 100%;
+    vertical-align: middle;
+    border: none;
+    border-spacing: 0;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+.banggiatenmien tr {
+	border-bottom: 1px solid #ededed;
+	height:40px !important;
+}
+.banggiatenmien td {
+    padding: 5px 0;
+    border: none;
+    vertical-align: middle;
+}
+.banggiatenmien .price {
+	font-weight: bold;
+	font-size: 110%;
+	color: #777;
+    padding: 0 5px 0 0;
+}
+.banggiatenmien .provider {
+	width: 130px;
+	font-size: .95em;
+}
+.banggiatenmien .provider a {
+	color: #666;
+}
+.banggiatenmien .provider img {
+	width: 40px;
+    vertical-align: middle;
+	padding-right: 5px;
+}
+.single-content img{
+	width:auto !important;
+	max-width:100% !important;
+}
+.banggiatenmien .action  {
+	text-align:right;
+}
+.coupon-code{
+    background-color: #669900;text-align: center;color: #fff;cursor: pointer;font-weight: bold;font-size: 14px;padding: 8px 15px;display: inline-block;margin-bottom: 10px;height: initial;border-radius: 4px;
+    
+}
+.main_header {
+    min-height:81px;
+}
+.woocommerce-page.columns-3 ul.products li.product, .woocommerce.columns-3 ul.products li.product {
+	   
+	    width: 33.33333% !important;
+		
+	  
+	}
+	
+	form.cart .quantity {
+		display:none;
+	}
+		.product .entry-summary form.cart .single_add_to_cart_button, .product .entry-summary form.cart .huong-dan-mua-hang{
+			
+			width:49.5%;
+		}
+		form.cart {
+			margin-bottom:5px !important;
+		}
+		.product .entry-summary form.cart .single_add_to_cart_button{
+			margin-right:0.5%;
+		}
+		.product .entry-summary form.cart .huong-dan-mua-hang{
+		    margin-left: 0.5%;
+			background-color:#FF7F00;
+		}
+		a.devvn_buy_now{
+			max-width:100% !important;
+			width:100%;
+			margin:0px !important;
+			
+		}
+		.devvn-popup-title, 
+.popup-customer-info-group .devvn-order-btn {
+			background:#1E8CBE !important;
+		}
+		/* Custom CSS */
+.myheading 
+{
+font-weight: bold;
+font-size: 15px;
+border-left: 3px solid #33BCF2;
+padding: 7px;
+background-color: #F0EDE9;
+width:100% !important;
+}
+.vrk-warning
+ {
+    margin: 10px 0 15px;
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px dashed
+}
+.vrk-warning,
+.entry-content .mgg-voucher-table .vrk-warning {
+    border-color: #9d9c49;
+    color: #555585;
+    background: #fdfdcb
+}
+.vrk-warning h4 {
+    margin: 5px;
+    padding: 0;
+    font-size: 18px
+}
+.vrk-warning p {
+    font-size: 14px;
+    color: #434E54;
+    margin: 5px
+}
+.vrk-warning div {
+clear: both;
+width: 100%;
+}
+.vrk-warning ul{
+display: block;
+margin-top: 5px !important;
+}
+.menuStick .show_phone_mobile
+	{
+		bottom:5px;
+	}
+@media (max-width: 767px)
+{
+	.woocommerce-page.columns-3 ul.products li.product:nth-child(3n), .woocommerce.columns-3 ul.products li.product:nth-child(3n) 
+	{
+        border-right:none;
+    }
+	.header.sticky-header
+	{
+		width:100%;
+		
+		position:fixed;
+		    top:0px;
+			left:0px;
+			
+	}
+	.header.sticky-header .search_header
+	{
+		display:none;
+	}
+	.header.sticky-header .main_header{
+		min-height:60px  !important;
+		height:60px !important;
+	}
+	.top_header{
+		display:none !important;
+	}
+	.woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .place-order input.button {
+	width:100%;
+			line-height:40px!important;
+			height:40px !important;
+			position:fixed;
+			left:0px !important;
+			bottom:0px !important;
+			padding:0px !important;
+			border-radius:0px;
+			z-index:999999;
+			margin-bottom:0px !important;
+	}
+	
+	.menuStick .show_phone_mobile
+	{
+		bottom:45px;
+	}
+	.product .entry-summary form.cart .single_add_to_cart_button, .product .entry-summary form.cart .huong-dan-mua-hang{
+			width:50%;
+			line-height:40px;
+			height:40px;
+			padding-top:0px;
+			text-align:center;
+			vertical-align:middle;
+			position:fixed;
+			bottom:0px;
+			border-radius:0px;
+			margin:0px;
+			
+			z-index:999999;
+			
+			
+		}
+		
+		.product .entry-summary form.cart .single_add_to_cart_button{
+			left:0px;
+		}
+		.product .entry-summary form.cart .huong-dan-mua-hang{
+		    right:0px;
+		}
+}
+@media (max-width: 530px){
+	.product .entry-summary form.cart .single_add_to_cart_button, .product .entry-summary form.cart .huong-dan-mua-hang{
+		font-size:13px;
+	}
+}
+@media (max-width: 399px){
+	.product .entry-summary form.cart .single_add_to_cart_button, .product .entry-summary form.cart .huong-dan-mua-hang{
+		font-size:12px;
+	}
+}
+	  
+/* Custom CSS Tablet */@media (max-width: 849px)
+{
+	.techslide .carousel-nav .carousel-cell {width: 40% !important;}
+}
+/* Custom CSS Mobile */@media (max-width: 549px)
+{
+.techslide .carousel-nav .carousel-cell {width: 50% !important;}
+	.techslide .carousel-cell img {height: auto !important;width: 100% !important;bottom: 0;left: 0;top: 0;object-position: 50% 50%;object-fit: cover;font-family: 'object-fit: cover;';right: 0;}
+}
