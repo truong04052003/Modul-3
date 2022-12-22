@@ -33,7 +33,9 @@
 
     <table class="table">
       <a href="{{route('products.create')}}" class="btn btn-primary">Thêm sản phẩm</a>
+      <a href="{{route('products.garbagecan')}}" class="btn btn-primary">Thùng rác</a>
       <thead>
+        
         <tr>
           <th scope="col">STT</th>
           <th scope="col">Tên sản phẩm</th>

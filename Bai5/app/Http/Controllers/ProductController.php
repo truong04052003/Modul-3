@@ -15,7 +15,6 @@ class ProductController extends Controller
     {
         $items  = Product::with('category')->paginate(4);
         return view('admin.products.index', compact('items'));
-        // return view('shop.layouts.main', compact('items'));
     }
     public function create()
     {
@@ -44,10 +43,10 @@ class ProductController extends Controller
     public function show($id)
     {
         $item = Product::find($id);
-        dd($item);
     }
     public function edit($id)
     {
+      
         $product = Product::find($id);
         return view('admin.products.edit', compact('product'));
     }
@@ -70,11 +69,6 @@ class ProductController extends Controller
         $product->save();
         return redirect()->route('products.index');
     }
-    public function destroy($id)
-    {
-        Product::find($id)->delete();
-        return redirect()->route('products.index');
-    }
     // tìm kiếm
     public function search(Request $request)
     {
@@ -85,16 +79,33 @@ class ProductController extends Controller
         $products = Product::where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
         return view('products.list', compact('products', 'cities'));
     }
-    public function softdeletes()
+    //xóa tạm thời
+    public function destroy($id)
     {
-
+        $products = Product::find($id);
+            $products->delete();
+            return redirect()->route('products.index');
+        }
+    
+    //thùng rác
+    public function garbagecan()
+    {
+        $softs = Product::onlyTrashed()->get();
+        return view('admin.products.soft', compact('softs'));
     }
-    public function trash()
+    //khôi phục
+    public function restore($id)
     {
-
+        // dd($id);
+        $softs = Product::withTrashed()->find($id);
+        $softs->restore();
+        return redirect()->route('products.index');
     }
-    public function restoredelete()
+    //xóa vĩnh viễn
+    public function deleteforever($id)
     {
-        
+        $softs = Product::withTrashed()->find($id);
+        $softs->forceDelete();
+        return redirect()->route('products.index');
     }
 }
