@@ -21,7 +21,7 @@
         <div class="row">
           <div class="col-8">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" class="form-control"placeholder="Tìm kiếm sản phẩm">
             </div>
           </div>
           <div class="col-4">
@@ -51,7 +51,7 @@
           <td>{{$item['price']}}</td>
           <td>{{$item->category->name}}</td>
           <td>
-            <img src="{{ asset('admin/uploads/'. $item->image) }}" alt="" style="width: 180px">
+            <img src="{{ asset('admin/uploads/'. $item->image) }}" alt="" style="width: 150px">
           </td>
 
           <td class="text-right">

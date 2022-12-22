@@ -87,6 +87,9 @@
     margin-top: 40px;
     letter-spacing: 4px
   }
+  button {
+    background-color: #03e9f4;
+}
 
   .login-box a:hover {
     background: #03e9f4;
@@ -190,27 +193,33 @@
 <body>
   <div class="login-box">
     <h2>Đăng ký</h2>
-    <form>
-      <div class="user-box">
-        <input type="text" name="" required="">
-        <label>Username</label>
+    <form method="post" action="{{route('admin.register')}}">
+      @csrf
+      <div class="user-box"> <br>
+        <input type="text" name="name">
+        <label>Name</label>
+      </div> 
+      <div class="user-box"><br>
+        <input type="text" name="email">
+        <label>Email</label>
+      </div> 
+      <div class="user-box"><br>
+        <input type="password" name="password">
+        <label>Pasword</label>
       </div>
-      <div class="user-box">
-        <input type="password" name="" required="">
-        <label>Password</label>
-      </div>
-      <div class="user-box">
-        <input type="password" name="" required="">
+      <div class="user-box"> <br>
+        <input type="password" name="passwordagain">
         <label>Enter the password</label>
       </div>
-
-      <a href="{{route('viewlogin')}}">
-        <span></span>
-        <span></span>
-        <span></span>
-        Submit
-      </a>
-
+      
+      <a> <button type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </button>
+          </a>
     </form>
   </div>
 </body>

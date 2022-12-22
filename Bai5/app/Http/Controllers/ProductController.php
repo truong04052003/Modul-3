@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
-use App\Http\Requests\StoreUpdatePost;
 use Illuminate\Database\Query\Builder;
 
 
@@ -16,6 +15,7 @@ class ProductController extends Controller
     {
         $items  = Product::with('category')->paginate(4);
         return view('admin.products.index', compact('items'));
+        // return view('shop.layouts.main', compact('items'));
     }
     public function create()
     {
@@ -75,7 +75,7 @@ class ProductController extends Controller
         Product::find($id)->delete();
         return redirect()->route('products.index');
     }
-    //tìm kiếm
+    // tìm kiếm
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -84,5 +84,17 @@ class ProductController extends Controller
         }
         $products = Product::where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
         return view('products.list', compact('products', 'cities'));
+    }
+    public function softdeletes()
+    {
+
+    }
+    public function trash()
+    {
+
+    }
+    public function restoredelete()
+    {
+        
     }
 }

@@ -13,7 +13,7 @@
   }
 
   span.d-none.d-lg-block {
-    color: chartreuse;
+    color: rgb(255, 255, 255);
   }
 
   ::before {
@@ -202,7 +202,7 @@
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
           <img src="{{asset('admin/assets/img/truong.jpg')}}" alt="Profile" class="rounded-circle">
           <span class="d-none d-md-block dropdown-toggle ps-2 text-light">Trần Văn Trường</span>
-        </a><!-- End Profile Iamge Icon -->
+        </a>
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
@@ -244,11 +244,12 @@
           </li>
 
           <li>
-            <a class="dropdown-item d-flex align-items-center" href="{{route('viewlogin')}}">
+            <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}">
               <i class="bi bi-box-arrow-right"></i>
               <span>Sign Out</span>
             </a>
           </li>
+          
 
         </ul><!-- End Profile Dropdown Items -->
       </li><!-- End Profile Nav -->

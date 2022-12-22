@@ -2,106 +2,74 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
-    public function register()
-    {
+    //trang chủ
+    public function profile(){
+        if (Auth::check()) {
+            return view('admin.layouts.main');
+        } else{
+            return view('admin.register');
+        }
+    }
+   
+    //đăng kí
+    public function formregister(){
         return view('admin.logins.register');
     }
-    public function checkregister(Request $request)
-    {
-        $validated = $request->validate([
-            'email' => 'required|unique:users|email',
-            'password' => 'required|min:6',
-        ]);
-
-        $notifications = [
-            'ok' => 'ok',
-        ];
-        $notification = [
-            'message' => 'error',
-        ];
+    public function register(Request $request){
         $user = new User();
         $user->name = $request->name;
-        $user->email = $request->email;
+        $user->email = $request->email; 
         $user->password = bcrypt($request->password);
-        try {
+        if( $request->passwordagain == $request->password ){
             $user->save();
-            return redirect()->route('viewlogin');
-        } catch (\Exception $e) {
-            Log::error("message:".$e->getMessage());
+            return redirect()->route('formlogin');
+        }else{
+            return redirect()->route('profile');
         }
-
-            if ($request->password == $request->confirmpassword) {
-                $user->save();
-                return redirect()->route('viewlogin')->with($notifications);
-            }else{
-                return redirect()->route('admin.register')->with($notification);
-
-            }
     }
-    public function viewlogin()
-    {
-        return view('admin.logins.login');
+
+     //đăng nhập
+    public function formlogin(){
+        if (Auth::check()) {
+            return view('admin.layouts.main');
+        } else{
+            return view('admin.logins.login');
+        }
     }
-  //xử lí đăng nhập
-  public function login(Request $request){
-    $validated = $request->validate([
-        'email' => 'required',
-        'password'=>'required|min:6',
-    ],
-        [
-            'email.required'=>'Không được để trống',
-            'password.required'=>'Không được để trống',
-            'password.min'=>'Lớn hơn :min',
-        ]
-);
-
-      $credentials = $request->validate([
-          'email' => ['required', 'email'],
-          'password' => ['required'],
-      ]);
-
-      if (Auth::attempt($credentials)) {
-
-          $request->session()->regenerate();
-
-          return redirect()->route('products.index');
-      }
-      // dd($request->all());
-      return back()->withErrors([
-          'email' => 'Thông tin đăng nhập không khớp với hồ sơ của chúng tôi.',
-      ])->onlyInput('email');
-  }
-
-
-    public function checklogin(Request $request)
-    {
-
-            $arr = [
-                'email' => $request->email,
-                'password' => $request->password
-            ];
-            // if (Auth::guard('users')->attempt($arr)) {
-                return redirect()->route('products.index');
-            // } else {
-            //     return redirect()->route('viewlogin');
-            // }
-
+    public function login(Request $request){
+        if(Auth::attempt(['email' => $request->email,'password' => $request->password])){
+            return redirect()->route('profile');
+        }else{
+            return view('admin.logins.login');
+        }
     }
-    public function logout(Request $request)
-    {
-        // Auth::logout();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect()->route('viewlogin');
+    // đăng xuất
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('formlogin');
     }
+
+    // form cập nhật tài khoản
+    public function setting(){
+        return view(' admin.updatesetting ');
+    }
+
+    // cập nhật tài khoản
+    public function settied(Request $request){
+        $users = User::find(auth()->id());
+        // dd($request);
+        if($request->change_password == 'on'){
+            $users->password = bcrypt($request->password);
+        };
+        $users->save();
+        return view('admin.includes.content');
+    }
+   
 }

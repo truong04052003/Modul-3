@@ -22,8 +22,9 @@
         <label for="exampleInputEmail1" class="form-label">Total</label>
         <input type="text" class="form-control" name="total" aria-describedby="emailHelp">
       </div>
+
       <button type="submit" class="btn btn-primary">Submit</button>
-      <a href="{{route('orders.index')}}" class="btn btn-primary">Back</a>
+      <a class="btn btn-danger btn-xs" href="{{route('orders.index')}}">Back</a>
     </form>
 
   </div>

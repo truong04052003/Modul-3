@@ -23,7 +23,7 @@
         <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
-      <a href="{{route('categories.index')}}" class="btn btn-primary">Back</a>
+      <a class="btn btn-danger btn-xs" href="{{route('categories.index')}}">Back</a>
     </form>
 
   </div>

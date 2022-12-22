@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProductCode;
 use Illuminate\Http\Request;
 use App\Models\Product;
+
 class ProductCodeController extends Controller
 {
     public function index()
@@ -13,16 +14,16 @@ class ProductCodeController extends Controller
         // $items = DB::table('product_codes')->get();
         // select * from product_codes
         // dd($items);
-        return view('admin.product_codes.index' , compact('items'));
+        return view('admin.product_codes.index', compact('items'));
     }
 
-    
+
     public function create()
     {
         return view('admin.product_codes.create');
     }
 
-   
+
     public function store(Request $request)
     {
         $productcode = new ProductCode();
@@ -36,7 +37,6 @@ class ProductCodeController extends Controller
 
     public function show($id)
     {
-        
     }
 
     public function edit($id)
@@ -46,7 +46,7 @@ class ProductCodeController extends Controller
         return view('admin.product_codes.edit', compact('productcode'));
     }
 
-  
+
     public function update(Request $request, $id)
     {
         $productcode = ProductCode::find($id);
@@ -56,10 +56,21 @@ class ProductCodeController extends Controller
         return redirect()->route('product_codes.index');
     }
 
-   
+
     public function destroy($id)
     {
         ProductCode::find($id)->delete();
         return redirect()->route('product_codes.index');
+    }
+    public function softdeletes()
+    {
+    }
+    public function trash()
+    {
+
+    }
+    public function restoredelete()
+    {
+        
     }
 }

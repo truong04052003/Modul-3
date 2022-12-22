@@ -61,4 +61,16 @@ class OrderController extends Controller
         Order::find($id)->delete();
         return redirect()->route('orders.index');
     }
+    public function softdeletes()
+    {
+
+    }
+    public function trash()
+    {
+
+    }
+    public function restoredelete()
+    {
+        
+    }
 }

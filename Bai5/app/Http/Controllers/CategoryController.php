@@ -60,4 +60,16 @@ class CategoryController extends Controller
         Category::find($id)->delete();
         return redirect()->route('categories.index');
     }
+    public function softdeletes()
+    {
+
+    }
+    public function trash()
+    {
+
+    }
+    public function restoredelete()
+    {
+        
+    }
 }

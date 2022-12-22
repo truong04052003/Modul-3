@@ -40,11 +40,13 @@
 
       <div class="mb-3">
         <label class="form-label">Ảnh</label>
-        <i type="file" class="form-control" name="image" value="{{$product->image}}">
-          @error('image')
-          <div class="alert alert-danger">{{ $message }}</div>
-          @enderror
-      </div>
+        <input type="file" class="form-control" name="image" value="{{$product->image}}"> <br>
+        <label for="exampleInputEmail1">Hình ảnh </label> <br>
+        <img src="{{ asset('admin/uploads/'.$product->image)}} " height="100px" width="150px">
+        @error('image')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+      </div> <br>
 
       <button type="submit" class="btn btn-primary">Submit</button>
       <a class="btn btn-danger btn-xs" href="{{route('products.index')}}">Back</a>

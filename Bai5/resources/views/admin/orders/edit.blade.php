@@ -22,10 +22,9 @@
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Total</label>
         <input type="text" class="form-control" name="total" value="{{$order->total}}" aria-describedby="emailHelp">
-      </div>
+      </div> 
       <button type="submit" class="btn btn-primary">Submit</button>
-      <a class="btn btn-danger btn-xs" href="{{route('orders.index')}}">Cancel</a>
-      <a href="{{route('orders.index')}}" class="btn btn-primary">Back</a>
+      <a class="btn btn-danger btn-xs" href="{{route('orders.index')}}">Back</a>
     </form>
 
 

@@ -15,7 +15,7 @@
       @method('PUT')
         @csrf
         <div>
-            <h1>Thêm mã sản phẩm</h1>
+            <h1>Sửa mã sản phẩm</h1>
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Code</label>
@@ -25,9 +25,9 @@
           <label for="exampleInputEmail1" class="form-label">product_id</label>
           <input type="text" class="form-control" name="product_id" value="{{$productcode->product_id}}" aria-describedby="emailHelp">
         </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a class="btn btn-danger btn-xs" href="{{route('product_codes.index')}}">Cancel</a>
-        <a href="{{route('product_codes.index')}}" class="btn btn-primary">Back</a>
+        <a class="btn btn-danger btn-xs" href="{{route('product_codes.index')}}">Back</a>
       </form>
       
 

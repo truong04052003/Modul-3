@@ -24,9 +24,8 @@
           <label for="exampleInputEmail1" class="form-label">product_id</label>
           <input type="text" class="form-control" name="product_id" aria-describedby="emailHelp">
         </div>
-
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="{{route('product_codes.index')}}" class="btn btn-primary">Back</a>
+        <a class="btn btn-danger btn-xs" href="{{route('product_codes.index')}}">Back</a>
       </form>
     
     </div>

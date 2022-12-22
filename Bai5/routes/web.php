@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductCodeController;
 use App\Http\Controllers\User1Controller;
-use App\Http\Controllers\UserController;
 
 use App\Models\Product;
 use App\Models\Category;
@@ -28,17 +28,22 @@ use App\Models\ProductCode;
 Route::get('/shopban', function () {
     return view('shop.layouts.main');
 });
+// Route::get('/shopban',[ProductController::class,'index'])->name('shopban');
+
 //tìm kiếm admin
 Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
-//đăng nhập
-Route::get('/viewlogin', [LoginController::class, 'viewlogin'])->name('viewlogin');
-Route::post('/checklogin', [LoginController::class, 'checklogin'])->name('admin.checklogin');
-//đăng ký
-Route::get('/register', [LoginController::class, 'register'])->name('admin.register');
-Route::post('/checkregister', [LoginController::class, 'checkregister'])->name('admin.checkregister');
 
-Route::post('/shoplogout', [LoginController::class, 'logout'])->name('adminlogout');
+Route::prefix('admin')->group(function () {
+    //đăng kí
+    Route::get('/register',[LoginController::class,'formregister'])->name('formregister');
+    Route::post('/adminregister',[LoginController::class,'register'])->name('admin.register');
+    //đăng nhập
+    Route::get('/login',[LoginController::class,'formlogin'])->name('formlogin');
+    Route::post('/adminlogin',[LoginController::class,'login'])->name('admin.login');
+    //đăng xuất
+    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+});
 
 
 //PRODUCT===========
@@ -52,6 +57,9 @@ Route::prefix('products')->group(function () {
     Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::put('/softdeletes/{id}', [ProductController::class, 'softdeletes'])->name('products.softdeletes');
+    Route::get('/trash', [ProductController::class, 'trash'])->name('products.trash');
+    Route::put('/restoredelete/{id}', [ProductController::class, 'restoredelete'])->name('products.restoredelete');
 });
 //CATEGORY===================
 Route::prefix('categories')->group(function () {
@@ -63,6 +71,9 @@ Route::prefix('categories')->group(function () {
     Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::put('/softdeletes/{id}', [CategoryController::class, 'softdeletes'])->name('categories.softdeletes');
+    Route::get('/trash', [CategoryController::class, 'trash'])->name('categories.trash');
+    Route::put('/restoredelete/{id}', [CategoryController::class, 'restoredelete'])->name('categories.restoredelete');
 });
 
 //ORDERS
@@ -75,6 +86,9 @@ Route::prefix('orders')->group(function () {
     Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
     Route::put('/{id}', [OrderController::class, 'update'])->name('orders.update');
     Route::delete('/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
+    Route::put('/softdeletes/{id}', [OrderController::class, 'softdeletes'])->name('orders.softdeletes');
+    Route::get('/trash', [OrderController::class, 'trash'])->name('orders.trash');
+    Route::put('/restoredelete/{id}', [OrderController::class, 'restoredelete'])->name('orders.restoredelete');
 });
 
 //PRODUCTCODE
@@ -87,6 +101,9 @@ Route::prefix('product_codes')->group(function () {
     Route::get('/{id}/edit', [ProductCodeController::class, 'edit'])->name('product_codes.edit');
     Route::put('/{id}', [ProductCodeController::class, 'update'])->name('product_codes.update');
     Route::delete('/{id}', [ProductCodeController::class, 'destroy'])->name('product_codes.destroy');
+    Route::put('/softdeletes/{id}', [ProductCodeController::class, 'softdeletes'])->name('product_codes.softdeletes');
+    Route::get('/trash', [ProductCodeController::class, 'trash'])->name('product_codes.trash');
+    Route::put('/restoredelete/{id}', [ProductCodeController::class, 'restoredelete'])->name('product_codes.restoredelete');
 });
 
 
@@ -113,11 +130,9 @@ Route::get('hasInverse', function () {
 });
 
 Route::get('manyManyProducts', function () {
-    
 });
 
 Route::get('manyManyOrders', function () {
-
 });
 
 
