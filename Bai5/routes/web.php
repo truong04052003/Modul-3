@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductCodeController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\User1Controller;
 
 use App\Models\Product;
@@ -24,11 +25,14 @@ use App\Models\ProductCode;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//kiểm tra shop
-Route::get('/shopban', function () {
-    return view('shop.layouts.main');
+
+//shop
+Route::prefix('shop')->group(function () {
+    Route::get('/index', [ShopController::class,'index'])->name('shop.index');
+    
+
+    
 });
-// Route::get('/shopban',[ProductController::class,'index'])->name('shopban');
 
 //tìm kiếm admin
 Route::get('/search', [ProductController::class, 'search'])->name('products.search');
