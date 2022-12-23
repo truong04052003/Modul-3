@@ -50,10 +50,10 @@
         <tr>
           <th scope="row">{{++$key}}</th>
           <td>{{$item['name']}}</td>
-          <td>{{$item['price']}}</td>
+          <td>{{number_format($item['price']) }} </td>
           <td>{{$item->category->name}}</td>
           <td>
-            <img src="{{ asset('admin/uploads/'. $item->image) }}" alt="" style="width: 150px">
+            <img src="{{ asset('admin/uploads/'. $item->image) }}" alt="" width="130px" height="130px">
           </td>
 
           <td class="text-right">

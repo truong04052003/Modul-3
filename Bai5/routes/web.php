@@ -28,16 +28,35 @@ use App\Models\ProductCode;
 
 //shop
 Route::prefix('shop')->group(function () {
+    //trang chính của shop
     Route::get('/index', [ShopController::class,'index'])->name('shop.index');
-    
-
+    //xem chi tiết sản phẩm 
+    Route::get('/showsanpham/{id}', [ShopController::class, 'show'])->name('showsanpham');
+    //thêm vào giỏ hàng 
+    Route::get('/cart', [ShopController::class, 'cart'])->name('shop.cart');
+    Route::get('/store/{id}', [ShopController::class, 'store'])->name('shop.store');
+    //cập nhật giỏ hàng
+    Route::put('/update-cart', [ShopController::class, 'update'])->name('update.cart');
+    //xóa khỏi giỏ hàng 
+    Route::delete('/remove-from-cart/{id}',[ProductController::class,'remove'])->name('remove.from.cart');
+    //thanh toán tiền 
+    Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('checkOuts');
     
 });
+//Logn shop 
+Route::prefix('shop')->group(function () {
+     //đăng kí shop
+     Route::get('/register', [ShopController::class, 'register'])->name('shop.register');
+     Route::post('/checkregister', [ShopController::class, 'checkregister'])->name('shop.checkregister');
+    //đăng nhập shop
+    Route::get('/login', [ShopController::class, 'login'])->name('shop.login');
+    Route::post('/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
+    //đăng xuất shop
+    Route::post('/shoplogout', [ShopController::class, 'logout'])->name('shoplogout');
+});
 
-//tìm kiếm admin
-Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
-
+//Login admin
 Route::prefix('admin')->group(function () {
     //đăng kí
     Route::get('/register',[LoginController::class,'formregister'])->name('formregister');
@@ -48,6 +67,8 @@ Route::prefix('admin')->group(function () {
     //đăng xuất
     Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 });
+//tìm kiếm admin
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
 
 //PRODUCT===========
@@ -65,6 +86,8 @@ Route::prefix('products')->group(function () {
     Route::get('/restore/{id}',[ProductController::class,'restore'])->name('products.restore');
     Route::get('/deleteforever/{id}',[ProductController::class,'deleteforever'])->name('products.deleteforever');
     Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
+    //tìm kiếm 
+    Route::post('/search', [ProductController::class,'search'])->name('products.search');
 });
 //CATEGORY===================
 Route::prefix('categories')->group(function () {

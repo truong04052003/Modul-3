@@ -69,15 +69,13 @@ class ProductController extends Controller
         $product->save();
         return redirect()->route('products.index');
     }
-    // tìm kiếm
+    //tìm kiếm
     public function search(Request $request)
     {
-        $keyword = $request->input('keyword');
-        if (!$keyword) {
-            return redirect()->route('products.index');
-        }
-        $products = Product::where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
-        return view('products.list', compact('products', 'cities'));
+        $products = Product::where('name', 'Like', '%' . $request->search . '%')
+            ->orwhere('price', $request->search)
+            ->get();
+        return view('admin.product.search', compact('products'));
     }
     //xóa tạm thời
     public function destroy($id)
@@ -108,4 +106,5 @@ class ProductController extends Controller
         $softs->forceDelete();
         return redirect()->route('products.index');
     }
+   
 }

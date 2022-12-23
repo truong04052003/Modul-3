@@ -203,67 +203,20 @@
 
 	@include('shop.includes.header');
 
-	{{-- tiêu đề trên --}}
+	{{-- tiêu đề trên ảnh bìa --}}
 	<div class="banner-topzone">
 		<a aria-label="slide" data-cate="0" data-place="2219" href="https://www.topzone.vn/khuyen-mai-hot" onclick="jQuery.ajax({ url: '/bannertracking?bid=67347&r='+ (new Date).getTime(), async: true, cache: false });"><img width='1920px' height='60px'  loading="lazy" class="lazyload" data-src="//cdn.tgdd.vn/2022/12/banner/Desk-1200x100.webp" alt="Banner Promote 100 Shop Topzone Desktop"  ></a>    </div>  
 		
-		{{-- tiêu đề thanh trường  --}}
+		
 			</div>
-	<div class="fs_menu_overlay"></div>
-	<div class="hamburger_menu">
-		<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-		<div class="hamburger_menu_content text-right">
-			<ul class="menu_top_nav">
-				<li class="menu_item has-children">
-					<a href="#">
-						usd
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#">cad</a></li>
-						<li><a href="#">aud</a></li>
-						<li><a href="#">eur</a></li>
-						<li><a href="#">gbp</a></li>
-					</ul>
-				</li>
-				<li class="menu_item has-children">
-					<a href="#">
-						English
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#">French</a></li>
-						<li><a href="#">Italian</a></li>
-						<li><a href="#">German</a></li>
-						<li><a href="#">Spanish</a></li>
-					</ul>
-				</li>
-				<li class="menu_item has-children">
-					<a href="#">
-						My Account
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-						<li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
-					</ul>
-				</li>
-				<li class="menu_item"><a href="#">home</a></li>
-				<li class="menu_item"><a href="#">shop</a></li>
-				<li class="menu_item"><a href="#">promotion</a></li>
-				<li class="menu_item"><a href="#">pages</a></li>
-				<li class="menu_item"><a href="#">blog</a></li>
-				<li class="menu_item"><a href="#">contact</a></li>
-			</ul>
-		</div>
-	</div>
+	
 
-	{{-- tiêu đề dưới --}}
+	
 	<div class="big-banner">
 	
         <a aria-label="slide" data-cate="0" data-place="1998" href="https://www.thegioididong.com/flashsale" onclick="jQuery.ajax({ url: '/bannertracking?bid=62540&r='+ (new Date).getTime(), async: true, cache: false });"><img width='1920px' height='400px'  src="//cdn.tgdd.vn/2022/12/banner/Banner-Big-Desk-min-1920x450.webp" alt="Banner Big Campaign"  ></a>
     </div>
-
+{{-- tiêu đề dưới ảnh bìa --}}
 
 	<div class="header-top-bar">
         <div class="banner-media">
@@ -288,8 +241,8 @@
     </style>
 
         </div>
-</div>
-	<!-- New Arrivals -->
+</div> 
+	 
 
 	{{-- Sản phẩm --}}
 	<div class="new_arrivals">
@@ -297,20 +250,25 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_title new_arrivals_title">
-						<h1>Sản phẩm</h1>
+						<h1>Sản phẩm</h1> 
 					</div>
-				</div>
+				</div><br>
 			</div>
 			<div class="row align-items-center">
-				<div class="col text-center">
-					<div class="new_arrivals_sorting">
+				<form action="/tim-kiem" onsubmit="return suggestSearch(event);" class="header__search">
+					<input id="skw" type="text" class="input-search" onkeyup="suggestSearch(event);" placeholder="Bạn tìm gì..." name="key" autocomplete="off" maxlength="100">
+					<button type="submit">
+						<i class="icon-search"></i>
+					</button>
+					<div id="search-result"></div>
+				</form>
+				<div class="col text-center"> 
 						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
 							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">Liên quan</li>
 							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">Mới nhất</li>
 							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">Bán chạy</li>
 							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">Giá</li>
 						</ul>
-					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -328,7 +286,7 @@
 								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
 								<div class="product_info">
 									<h6 class="product_name"><a href="single.html">{{$product->name}}</a></h6>
-									<div class="product_price">{{$product->price}} VNĐ<span></span></div>
+									<div class="product_price">{{number_format($product->price)}} VNĐ<span></span></div>
 								</div>
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">Giỏ hàng</a></div>
@@ -339,7 +297,18 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		<style>
+			form.header__search {
+    margin: 10px 10px 10px 110px;
+}
+		</style>
+	</div>  <br><br>
+
+	{{-- tiêu đề dưới sản phẩm --}}
+	<div class="banner-topzone">
+		<a aria-label="slide" data-cate="0" data-place="" href="https://www.topzone.vn/khuyen-mai-hot" onclick="jQuery.ajax({ url: '/bannertracking?bid=67347&r='+ (new Date).getTime(), async: true, cache: false });"><img width='1500px' height='100'  loading="lazy" class="lazyload" data-src="//cdn.tgdd.vn/2022/12/banner/Desk-1200x100.webp" alt="Banner Promote 100 Shop Topzone Desktop"  ></a>    </div>  
+		
+			</div>
 	<!-- Footer -->
     @include('shop.includes.footer')
 
