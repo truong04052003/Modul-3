@@ -30,8 +30,7 @@ class ShopController extends Controller
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
             $cart[$id]['amount']++;
-            // dd( $cart[$id]['amount']);
-            // dd(1230);
+   
 
         } else {
             $cart[$id] = [

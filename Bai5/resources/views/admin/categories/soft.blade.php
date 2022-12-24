@@ -1,15 +1,12 @@
 @extends('admin.layouts.main')
 @section('content')
         <table class="table">
-            <a href="{{ route('products.index') }}" class="btn btn-info">Back</a> <br><br>
+            <a href="{{ route('categories.index') }}" class="btn btn-info">Back</a> <br><br>
             <h1 style="color:rgb(110, 41, 41)" >Thùng rác</h1>
             <thead>
             <tr>
                 <th colspan="4">STT</th>
                 <th colspan="4">Tên</th>
-                <th colspan="4">Giá</th>
-                <th colspan="4">Thể loại</th>
-                <th colspan="4">Ảnh</th>
             </tr>
             </thead>
             <tbody>
@@ -17,8 +14,6 @@
             <tr>
                 <th colspan="4">{{ ++$key }}</th>
                 <td colspan="4">{{ $soft->name }}</td>
-                <td colspan="4">{{ $soft->price }}</td>
-                <td colspan="4">{{ $soft->category_id }}</td>
                 <td>
                     <img src="{{ asset('admin/uploads/'. $soft->image) }}" alt="" style="width: 150px">
                   </td>

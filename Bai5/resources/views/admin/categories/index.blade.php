@@ -17,6 +17,7 @@
 
     <table class="table">
       <a href="{{route('categories.create')}}" class="btn btn-primary">Thêm thể loại</a>
+      <a href="{{route('categories.garbagecan')}}" class="btn btn-primary">Thùng rác</a>
       <thead>
         <tr>
           <th scope="col">id</th>

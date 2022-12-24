@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class User1Controller extends Controller
+class UserController extends Controller
 {
     public function __construct(){
         Auth::loginUsingId(1);

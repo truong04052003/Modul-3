@@ -11,9 +11,6 @@ class ProductCodeController extends Controller
     public function index()
     {
         $items = ProductCode::all();
-        // $items = DB::table('product_codes')->get();
-        // select * from product_codes
-        // dd($items);
         return view('admin.product_codes.index', compact('items'));
     }
 

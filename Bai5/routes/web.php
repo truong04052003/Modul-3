@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductCodeController;
 use App\Http\Controllers\ShopController;
-use App\Http\Controllers\User1Controller;
+use App\Http\Controllers\UserController;
 
 use App\Models\Product;
 use App\Models\Category;
@@ -95,13 +95,15 @@ Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index'])->name('categories.index');
     Route::get('/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('/{id}', [CategoryController::class, 'show'])->name('categories.show');
     Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
-    Route::put('/softdeletes/{id}', [CategoryController::class, 'softdeletes'])->name('categories.softdeletes');
-    Route::get('/trash', [CategoryController::class, 'trash'])->name('categories.trash');
-    Route::put('/restoredelete/{id}', [CategoryController::class, 'restoredelete'])->name('categories.restoredelete');
+    //thùng rác
+    Route::get('/garbagecan',[CategoryController::class,'garbagecan'])->name('categories.garbagecan');
+    Route::get('/restore/{id}',[CategoryController::class,'restore'])->name('categories.restore');
+    Route::get('/deleteforever/{id}',[CategoryController::class,'deleteforever'])->name('categories.deleteforever');
+    Route::get('/{id}', [CategoryController::class, 'show'])->name('categories.show');
+
 });
 
 //ORDERS
@@ -114,9 +116,7 @@ Route::prefix('orders')->group(function () {
     Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
     Route::put('/{id}', [OrderController::class, 'update'])->name('orders.update');
     Route::delete('/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
-    Route::put('/softdeletes/{id}', [OrderController::class, 'softdeletes'])->name('orders.softdeletes');
-    Route::get('/trash', [OrderController::class, 'trash'])->name('orders.trash');
-    Route::put('/restoredelete/{id}', [OrderController::class, 'restoredelete'])->name('orders.restoredelete');
+  
 });
 
 //PRODUCTCODE
@@ -129,9 +129,10 @@ Route::prefix('product_codes')->group(function () {
     Route::get('/{id}/edit', [ProductCodeController::class, 'edit'])->name('product_codes.edit');
     Route::put('/{id}', [ProductCodeController::class, 'update'])->name('product_codes.update');
     Route::delete('/{id}', [ProductCodeController::class, 'destroy'])->name('product_codes.destroy');
-    Route::put('/softdeletes/{id}', [ProductCodeController::class, 'softdeletes'])->name('product_codes.softdeletes');
-    Route::get('/trash', [ProductCodeController::class, 'trash'])->name('product_codes.trash');
-    Route::put('/restoredelete/{id}', [ProductCodeController::class, 'restoredelete'])->name('product_codes.restoredelete');
+     //thùng rác
+     Route::get('/garbagecan',[ProductController::class,'garbagecan'])->name('products.garbagecan');
+     Route::get('/restore/{id}',[ProductController::class,'restore'])->name('products.restore');
+     Route::get('/deleteforever/{id}',[ProductController::class,'deleteforever'])->name('products.deleteforever');
 });
 
 
@@ -170,4 +171,4 @@ Route::get('manyManyOrders', function () {
 
 
 //phân quyền
-Route::get('/user1', [User1Controller::class, 'index'])->name('user1.index');
+Route::get('/user1', [UserController::class, 'index'])->name('user1.index');

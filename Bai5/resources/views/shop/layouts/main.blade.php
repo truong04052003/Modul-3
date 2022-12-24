@@ -291,7 +291,7 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">Giỏ hàng</a></div>
 						</div>
-						@endforeach
+						@endforeach 
 					
 					</div>
 				</div>

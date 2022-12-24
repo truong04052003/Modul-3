@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Validator;
 
 
 class ProductController extends Controller
@@ -23,6 +24,22 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
+        // // Validation 
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required',
+            'image' => 'required',
+        ], [
+            'name.required' => 'Không được để trống',
+            'price.required' => 'Không được để trống',
+            'image.required' => 'Vui lòng chọn ảnh',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('products.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        // Luu
         $product = new Product();
         $product->name = $request->name;
         $product->price = $request->price;
@@ -37,8 +54,18 @@ class ProductController extends Controller
             $product->image = $new_image;
             $data['product_image'] = $new_image;
         }
-        $product->save();
-        return redirect()->route('products.index');
+
+        try {
+            $product->save(); //throw new Exection('Co loi xay ra');
+        } catch (\Exception $e) {
+            // Logic khi sai
+            Log::error($e->getMessage());
+            return redirect()->route('products.create')->with('error', 'Da co loi xay ra');
+        }
+        return redirect()->route('products.index')->with('success', 'Luu thanh cong');
+
+        // $product->save();
+        // return redirect()->route('products.index');
     }
     public function show($id)
     {
@@ -46,7 +73,7 @@ class ProductController extends Controller
     }
     public function edit($id)
     {
-      
+
         $product = Product::find($id);
         return view('admin.products.edit', compact('product'));
     }
@@ -69,22 +96,14 @@ class ProductController extends Controller
         $product->save();
         return redirect()->route('products.index');
     }
-    //tìm kiếm
-    public function search(Request $request)
-    {
-        $products = Product::where('name', 'Like', '%' . $request->search . '%')
-            ->orwhere('price', $request->search)
-            ->get();
-        return view('admin.product.search', compact('products'));
-    }
-    //xóa tạm thời
+    //xóa 
     public function destroy($id)
     {
         $products = Product::find($id);
-            $products->delete();
-            return redirect()->route('products.index');
-        }
-    
+        $products->delete();
+        return redirect()->route('products.index');
+    }
+
     //thùng rác
     public function garbagecan()
     {
@@ -104,7 +123,14 @@ class ProductController extends Controller
     {
         $softs = Product::withTrashed()->find($id);
         $softs->forceDelete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.garbagecan');
     }
-   
+     //tìm kiếm
+     public function search(Request $request)
+     {
+         $products = Product::where('name', 'Like', '%' . $request->search . '%')
+             ->orwhere('price', $request->search)
+             ->get();
+         return view('admin.product.search', compact('products'));
+     }
 }

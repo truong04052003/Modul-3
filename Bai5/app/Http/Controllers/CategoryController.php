@@ -60,16 +60,26 @@ class CategoryController extends Controller
         Category::find($id)->delete();
         return redirect()->route('categories.index');
     }
-    public function softdeletes()
-    {
-
-    }
-    public function trash()
-    {
-
-    }
-    public function restoredelete()
-    {
-        
-    }
+     //thùng rác
+     public function garbagecan()
+     {
+         $softs = Category::onlyTrashed()->get();
+         return view('admin.categories.soft', compact('softs'));
+     }
+     //khôi phục
+     public function restore($id)
+     {
+         // dd($id);
+         $softs = Category::withTrashed()->find($id);
+         $softs->restore();
+         return redirect()->route('categories.index');
+     }
+     //xóa vĩnh viễn
+     public function deleteforever($id)
+     {
+         $softs = Category::withTrashed()->find($id);
+         $softs->forceDelete();
+         return redirect()->route('categories.garbagecan');
+     }
+  
 }
