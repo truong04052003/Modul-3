@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  <title>Admin Shop</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
@@ -37,7 +37,6 @@
         <label class="form-label">Thể loại</label>
         <input type="text" name="category_id" class="form-control" value="{{$product->category_id}}">
       </div>
-
       <div class="mb-3">
         <label class="form-label">Ảnh</label>
         <input type="file" class="form-control" name="image" value="{{$product->image}}"> <br>

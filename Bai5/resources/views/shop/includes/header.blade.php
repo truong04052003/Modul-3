@@ -12,7 +12,7 @@
                 <nav class="navbar">
                     
                     <ul class="navbar_menu">
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="http://localhost/Modul-3/Laravel/Bai5/public/shop/index">Shop</a></li>
                         <li><a href="#">Khuyến mãi</a></li>
                         <li><a href="#">Trang</a></li>
                         <li><a href="contact.html">Liên hệ</a></li>
