@@ -125,12 +125,12 @@ class ProductController extends Controller
         $softs->forceDelete();
         return redirect()->route('products.garbagecan');
     }
-     //tìm kiếm
-     public function search(Request $request)
-     {
-         $products = Product::where('name', 'Like', '%' . $request->search . '%')
-             ->orwhere('price', $request->search)
-             ->get();
-         return view('admin.product.search', compact('products'));
-     }
+    //tìm kiếm
+    public function search(Request $request)
+    {
+        $products = Product::where('name', 'Like', '%' . $request->search . '%')
+            ->orwhere('price', $request->search)
+            ->get();
+        return view('admin.product.search', compact('products'));
+    }
 }

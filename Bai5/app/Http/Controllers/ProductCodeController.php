@@ -64,10 +64,8 @@ class ProductCodeController extends Controller
     }
     public function trash()
     {
-
     }
     public function restoredelete()
     {
-        
     }
 }

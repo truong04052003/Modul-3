@@ -16,22 +16,20 @@ use Illuminate\Support\Str;
 
 class ShopController extends Controller
 {
- 
+
     public function index()
     {
         $products = Product::all();
         // dd($Products);
         return view('shop.layouts.main', compact('products'));
     }
-    public function store( $id)
+    public function store($id)
     {
 
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
             $cart[$id]['amount']++;
-   
-
         } else {
             $cart[$id] = [
                 "nameVi" => $product->name,
@@ -60,12 +58,12 @@ class ShopController extends Controller
     public function show($id)
     {
         $productshow = Product::findOrFail($id);
-        $param =[
-            'productshow'=>$productshow,
+        $param = [
+            'productshow' => $productshow,
         ];
 
         // $productshow-> show();
-        return view('shop.layouts.show',  $param );
+        return view('shop.layouts.show',  $param);
     }
     public function update($id)
     {
@@ -100,45 +98,42 @@ class ShopController extends Controller
         //     return response()->json(['status' => 'Xóa đơn hàng thành công']);
         // }
     }
-    
+
     public function checkOuts($id)
     {
-         return view('shop.checkout');
+        return view('shop.checkout');
     }
     public function order(Request $request)
     {
 
-            $id = Auth::guard('customers')->user()->id;
-            $data = Order::find($id);
-            $data->address = $request->address;
-            $data->email = $request->email;
-            $data->phone = $request->phone;
-            $data->address = $request->address;
-            $data->save();
+        $id = Auth::guard('customers')->user()->id;
+        $data = Order::find($id);
+        $data->address = $request->address;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->address = $request->address;
+        $data->save();
 
-            $order = new Order();
-            $order->customer_id = Auth::guard('customers')->user()->id;
-            $order->date_at = date('Y-m-d H:i:s');
-            $order->total = $request->totalAll;
-            $order->save();
+        $order = new Order();
+        $order->customer_id = Auth::guard('customers')->user()->id;
+        $order->date_at = date('Y-m-d H:i:s');
+        $order->total = $request->totalAll;
+        $order->save();
 
-                $count_product = count($request->product_id);
-                for ($i = 0; $i < $count_product; $i++) {
-                    $orderItem = new OrderDetail();
-                    $orderItem->order_id =  $order->id;
-                    $orderItem->product_id = $request->product_id[$i];
-                    $orderItem->quantity = $request->amount[$i];
-                    $orderItem->total = $request->total[$i];
-                    $orderItem->save();
-                    session()->forget('cart');
-                    DB::table('products')
-                        ->where('id', '=', $orderItem->product_id)
-                        ->decrement('amount', $orderItem->quantity);
-                }
+        $count_product = count($request->product_id);
+        for ($i = 0; $i < $count_product; $i++) {
+            $orderItem = new OrderDetail();
+            $orderItem->order_id =  $order->id;
+            $orderItem->product_id = $request->product_id[$i];
+            $orderItem->quantity = $request->amount[$i];
+            $orderItem->total = $request->total[$i];
+            $orderItem->save();
+            session()->forget('cart');
+            DB::table('products')
+                ->where('id', '=', $orderItem->product_id)
+                ->decrement('amount', $orderItem->quantity);
+        }
 
-                return redirect()->route('shop');
+        return redirect()->route('shop');
     }
-    
-   
-
 }

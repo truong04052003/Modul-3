@@ -298,7 +298,7 @@
 			</div>
 		</div>
 		<style>
-			form.header__search {
+	form.header__search {
     margin: 10px 10px 10px 110px;
 }
 		</style>
