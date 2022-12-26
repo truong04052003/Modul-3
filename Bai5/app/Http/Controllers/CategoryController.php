@@ -69,7 +69,6 @@ class CategoryController extends Controller
     //khôi phục
     public function restore($id)
     {
-        // dd($id);
         $softs = Category::withTrashed()->find($id);
         $softs->restore();
         return redirect()->route('categories.index');
@@ -79,6 +78,6 @@ class CategoryController extends Controller
     {
         $softs = Category::withTrashed()->find($id);
         $softs->forceDelete();
-        return redirect()->route('categories.garbagecan');
+        return redirect()->route('categories.index');
     }
 }

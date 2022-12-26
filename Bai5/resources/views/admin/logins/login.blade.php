@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Đăng nhập</title>
 </head>
 <style>
     html {
@@ -174,6 +174,12 @@ body {
     bottom: 100%;
   }
 }
+button.btn.submits.frgt-pass {
+    margin: -48px 0px 26px 211px;
+} 
+button {
+    margin: 0px 0px -25px 12px;
+}
 </style>
 <body>
     <div class="login-box">
@@ -194,6 +200,12 @@ body {
             <span></span>
             Submit
           </a>
+          <div class="other">
+            <button class="btn submits frgt-pass">Quên mật khẩu</button>
+            <div>
+              <button href="{{ route('formregister') }}">Đăng kí tài khoản</button>
+            </div>
+        </div>
         </form>
       </div>
 </body>

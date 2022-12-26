@@ -26,10 +26,11 @@ use App\Models\ProductCode;
 |
 */
 
-//shop
+//SHOP
 Route::prefix('shop')->group(function () {
     //trang chính của shop
-    Route::get('/index', [ShopController::class,'index'])->name('shop.index');
+    Route::get('/index', [ShopController::class, 'index'])->name('shop.index');
+
     //xem chi tiết sản phẩm 
     Route::get('/showsanpham/{id}', [ShopController::class, 'show'])->name('showsanpham');
     //thêm vào giỏ hàng 
@@ -38,16 +39,16 @@ Route::prefix('shop')->group(function () {
     //cập nhật giỏ hàng
     Route::put('/update-cart', [ShopController::class, 'update'])->name('update.cart');
     //xóa khỏi giỏ hàng 
-    Route::delete('/remove-from-cart/{id}',[ProductController::class,'remove'])->name('remove.from.cart');
+    Route::delete('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
     //thanh toán tiền 
     Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('checkOuts');
-    
+   
 });
-//Logn shop 
+//Login shop 
 Route::prefix('shop')->group(function () {
-     //đăng kí shop
-     Route::get('/register', [ShopController::class, 'register'])->name('shop.register');
-     Route::post('/checkregister', [ShopController::class, 'checkregister'])->name('shop.checkregister');
+    //đăng kí shop
+    Route::get('/register', [ShopController::class, 'register'])->name('shop.register');
+    Route::post('/checkregister', [ShopController::class, 'checkregister'])->name('shop.checkregister');
     //đăng nhập shop
     Route::get('/login', [ShopController::class, 'login'])->name('shop.login');
     Route::post('/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
@@ -59,35 +60,34 @@ Route::prefix('shop')->group(function () {
 //Login admin
 Route::prefix('admin')->group(function () {
     //đăng kí
-    Route::get('/register',[LoginController::class,'formregister'])->name('formregister');
-    Route::post('/adminregister',[LoginController::class,'register'])->name('admin.register');
+    Route::get('/register', [LoginController::class, 'formregister'])->name('formregister');
+    Route::post('/adminregister', [LoginController::class, 'register'])->name('admin.register');
     //đăng nhập
-    Route::get('/login',[LoginController::class,'formlogin'])->name('formlogin');
-    Route::post('/adminlogin',[LoginController::class,'login'])->name('admin.login');
+    Route::get('/login', [LoginController::class, 'formlogin'])->name('formlogin');
+    Route::post('/adminlogin', [LoginController::class, 'login'])->name('admin.login');
     //đăng xuất
-    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
-//tìm kiếm admin
-Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+// //tìm kiếm admin
+// Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
 
 //PRODUCT===========
 Route::prefix('products')->group(function () {
 
-    //nối route với controller
     Route::get('/', [ProductController::class, 'index'])->name('products.index');
     Route::get('/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/', [ProductController::class, 'store'])->name('products.store');
     Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/{id}', [ProductController::class, 'update'])->name('products.update');
-    Route::delete('{id}',[ProductController::class,'destroy'])->name('products.destroy');
+    Route::delete('{id}', [ProductController::class, 'destroy'])->name('products.destroy');
     //thùng rác
-    Route::get('/garbagecan',[ProductController::class,'garbagecan'])->name('products.garbagecan');
-    Route::get('/restore/{id}',[ProductController::class,'restore'])->name('products.restore');
-    Route::get('/deleteforever/{id}',[ProductController::class,'deleteforever'])->name('products.deleteforever');
+    Route::get('/garbagecan', [ProductController::class, 'garbagecan'])->name('products.garbagecan');
+    Route::get('/restore/{id}', [ProductController::class, 'restore'])->name('products.restore');
+    Route::get('/deleteforever/{id}', [ProductController::class, 'deleteforever'])->name('products.deleteforever');
     Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
     //tìm kiếm 
-    Route::post('/search', [ProductController::class,'search'])->name('products.search');
+    Route::post('/search', [ProductController::class, 'search'])->name('products.search');
 });
 //CATEGORY===================
 Route::prefix('categories')->group(function () {
@@ -99,11 +99,10 @@ Route::prefix('categories')->group(function () {
     Route::put('/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
     //thùng rác
-    Route::get('/garbagecan',[CategoryController::class,'garbagecan'])->name('categories.garbagecan');
-    Route::get('/restore/{id}',[CategoryController::class,'restore'])->name('categories.restore');
-    Route::get('/deleteforever/{id}',[CategoryController::class,'deleteforever'])->name('categories.deleteforever');
+    Route::get('/garbagecan', [CategoryController::class, 'garbagecan'])->name('categories.garbagecan');
+    Route::get('/restore/{id}', [CategoryController::class, 'restore'])->name('categories.restore');
+    Route::get('/deleteforever/{id}', [CategoryController::class, 'deleteforever'])->name('categories.deleteforever');
     Route::get('/{id}', [CategoryController::class, 'show'])->name('categories.show');
-
 });
 
 //ORDERS
@@ -116,7 +115,6 @@ Route::prefix('orders')->group(function () {
     Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
     Route::put('/{id}', [OrderController::class, 'update'])->name('orders.update');
     Route::delete('/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
-  
 });
 
 //PRODUCTCODE
@@ -129,10 +127,10 @@ Route::prefix('product_codes')->group(function () {
     Route::get('/{id}/edit', [ProductCodeController::class, 'edit'])->name('product_codes.edit');
     Route::put('/{id}', [ProductCodeController::class, 'update'])->name('product_codes.update');
     Route::delete('/{id}', [ProductCodeController::class, 'destroy'])->name('product_codes.destroy');
-     //thùng rác
-     Route::get('/garbagecan',[ProductController::class,'garbagecan'])->name('products.garbagecan');
-     Route::get('/restore/{id}',[ProductController::class,'restore'])->name('products.restore');
-     Route::get('/deleteforever/{id}',[ProductController::class,'deleteforever'])->name('products.deleteforever');
+    //thùng rác
+    // Route::get('/garbagecan', [ProductCodeController::class, 'garbagecan'])->name('products.garbagecan');
+    // Route::get('/restore/{id}', [ProductCodeController::class, 'restore'])->name('products.restore');
+    // Route::get('/deleteforever/{id}', [ProductCodeController::class, 'deleteforever'])->name('products.deleteforever');
 });
 
 

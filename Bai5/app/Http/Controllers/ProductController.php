@@ -15,6 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         $items  = Product::with('category')->paginate(4);
+        if($key =request()->key){
+            $items  = Product::with('category')->where('name','like','%'.$key.'%')->paginate(4);
+        }
         return view('admin.products.index', compact('items'));
     }
     public function create()

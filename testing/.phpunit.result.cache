@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Test\\CaculatorTest::test_sum_1":4,"Test\\CaculatorTest::test_sum_2":3,"Test\\CaculatorTest::test_minus":3},"times":{"Test\\CaculatorTest::test_sum_1":0.004,"Test\\CaculatorTest::test_sum_2":0,"Test\\CaculatorTest::test_minus":0}}

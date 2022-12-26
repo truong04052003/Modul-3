@@ -100,6 +100,11 @@
   </ul>
 
 </aside><!-- End Sidebar-->
+<style>
+  span {
+    color: black;
+}
+</style>
 
 
 

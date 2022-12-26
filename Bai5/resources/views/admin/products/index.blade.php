@@ -16,12 +16,11 @@
 
     {{-- Tìm kiếm --}}
     <div class="col-6">
-      <form class="navbar-form navbar-left" action="{{route('products.search')}}">
-        @csrf
+      <form class="form-inline" action="" >
         <div class="row">
           <div class="col-8">
             <div class="form-group">
-              <input type="text" class="form-control"placeholder="Tìm kiếm sản phẩm">
+              <input name="key" class="form-control"placeholder="Tìm kiếm sản phẩm">
             </div>
           </div>
           <div class="col-4">
