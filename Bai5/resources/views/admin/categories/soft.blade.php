@@ -18,9 +18,9 @@
                     <img src="{{ asset('admin/uploads/'. $soft->image) }}" alt="" style="width: 150px">
                   </td>
                 <td>
-                    <a href="{{route('products.deleteforever',[$soft->id])}}" onclick="return confirm('Bạn có chắc chắn xóa vĩnh viễn không?');" class="btn btn-secondary">Xóa vĩnh viễn</a>
-                    <a href="{{route('products.restore',[$soft->id])}}" class="btn btn-warning" >Khôi phục</a>
-                </td>
+                    <a href="{{route('categories.deleteforever',[$soft->id])}}" onclick="return confirm('Bạn có chắc chắn xóa vĩnh viễn không?');" class="btn btn-secondary">Xóa vĩnh viễn</a>
+                    <a href="{{route('categories.restore',[$soft->id])}}" class="btn btn-warning" >Khôi phục</a>
+                </td>   
             </tr>
             @endforeach
             </tbody>

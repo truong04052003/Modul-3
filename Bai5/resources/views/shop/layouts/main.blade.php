@@ -12738,7 +12738,7 @@
 
 <body>
 
-    <div class="super_container">
+    <div class="super_container"> <br>
 
         <!-- Header -->
 
@@ -12753,16 +12753,12 @@
                     alt="Banner Promote 100 Shop Topzone Desktop"></a>
         </div>
     </div>
-
+{{-- ảnh  --}}
     <div class="big-banner">
-
-        <a aria-label="slide" data-cate="0" data-place="1998" href="https://www.thegioididong.com/flashsale"
-            onclick="jQuery.ajax({ url: '/bannertracking?bid=62540&r='+ (new Date).getTime(), async: true, cache: false });"><img
-                width='1920px' height='400px' src="//cdn.tgdd.vn/2022/12/banner/Banner-Big-Desk-min-1920x450.webp"
-                alt="Banner Big Campaign"></a>
+        <a aria-label="slide" data-cate="0" data-place="1998" href="https://www.thegioididong.com/mua-online-gia-re" onclick="jQuery.ajax({ url: '/bannertracking?bid=55886&r='+ (new Date).getTime(), async: true, cache: false });"><img width='1920' height='920'  src="//cdn.tgdd.vn/2022/12/banner/TGDDDESK-1920x450.webp" alt="Banner Big Campaign"  ></a>
     </div>
+    
     {{-- tiêu đề dưới ảnh bìa --}}
-
     <div class="header-top-bar">
         <div class="banner-media">
             <div class="media-slider" data-size="3">
@@ -12804,8 +12800,9 @@
             </div>
             <div class="row align-items-center">
 
+                 {{-- //tìm kiếm  --}}
                 <form action=""class="header__search">
-                    <input class="input-search" name="key" placeholder="Tìm sản phẩm">
+                    <input class="input-search" name="product" placeholder="Tìm sản phẩm">
                     <button type="submit">
                         <i class="icon-search"></i>
                     </button>
@@ -12814,7 +12811,7 @@
                 <div class="col text-center">
                     <ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
                         <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked"
-                            data-filter="*">Liên quan</li>
+                            data-filter="{{route('shop.index')}}" href="{{route('shop.index')}}">Liên quan</li>
                         <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
                             data-filter=".women">Mới nhất</li>
                         <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
@@ -12843,18 +12840,18 @@
                                         <span>-$20</span></div>
                                     <div class="product_info">
                                         <h6 class="product_name"><a
-                                                href="{{ route('showsanpham', [$product->id]) }}">{{ $product->name }}</a>
+                                                href="">{{ $product->name }}</a>
                                         </h6>
                                         <div class="product_price">{{ number_format($product->price) }}
-                                            VNĐ<span></span></div>
+                                            VNĐ<span></span></div> <br>
                                         <div class="view">
-                                            <a target="_blank" href="/acc/1187474">Chi tiết</a>
+                                            <a target="_blank" href="{{route('showsanpham',$product->id)}}">Chi tiết</a>
                                         </div>
                                         
                                     </div>
 
                                 </div>
-                                <div class="red_button add_to_cart_button"><a href="{{route('shop.store',$product->id)}}">Giỏ
+                                <div class="red_button add_to_cart_button"><a href="{{route('shop.add',$product->id)}}">Giỏ
                                         hàng</a></div>
                             </div>
                         @endforeach

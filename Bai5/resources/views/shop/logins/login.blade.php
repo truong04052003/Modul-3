@@ -187,13 +187,7 @@ body {
             <input type="password" name="" required="">
             <label>Password</label>
           </div>
-          <a href="{{route('products.index')}}">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Submit
-          </a>
+          <a><button type="submit">Submit</button></a>  <br> <br>
         </form>
       </div>
 </body>

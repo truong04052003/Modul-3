@@ -33,16 +33,19 @@ Route::prefix('shop')->group(function () {
 
     //xem chi tiết sản phẩm 
     Route::get('/showsanpham/{id}', [ShopController::class, 'show'])->name('showsanpham');
-    //thêm vào giỏ hàng 
-    Route::get('/cart', [ShopController::class, 'cart'])->name('shop.cart');
-    Route::get('/store/{id}', [ShopController::class, 'store'])->name('shop.store');
+     //hiển thị giỏ hàng
+    Route::get('/cart', [ShopController::class, 'cart'])->name('cart-index');
+    //thêm sản phẩm vào giỏ hàng
+    Route::get('/add-to-cart/{id}', [ShopController::class, 'store'])->name('shop.add');
     //cập nhật giỏ hàng
     Route::put('/update-cart', [ShopController::class, 'update'])->name('update.cart');
     //xóa khỏi giỏ hàng 
-    Route::delete('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
+    Route::delete('/remove-from-cart', [ShopController::class, 'remove'])->name('remove.cart');
     //thanh toán tiền 
-    Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('checkOuts');
-   
+    Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('shop.checkOuts');
+    //tìm kiếm
+    Route::get('/search', [ShopController::class, 'search'])->name('shop.search');
+
 });
 //Login shop 
 Route::prefix('shop')->group(function () {
@@ -67,6 +70,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/adminlogin', [LoginController::class, 'login'])->name('admin.login');
     //đăng xuất
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    //quên mật khẩu
+    Route::get('forget-password', [LoginController::class, 'forgetpass'])->name('show.forgetpass');
+    Route::post('/email', [LoginController::class, 'quenmatkhau'])->name('quenmatkhau');
+
 });
 // //tìm kiếm admin
 // Route::get('/search', [ProductController::class, 'search'])->name('products.search');
@@ -136,31 +143,31 @@ Route::prefix('product_codes')->group(function () {
 
 
 
-Route::get('hasOne', function () {
-    $item = Product::find(1); // select * from products where id = 1;
-    dd($item->product_code->toArray()); // select * from product_code where product_id = 1
-});
+// Route::get('hasOne', function () {
+//     $item = Product::find(1); // select * from products where id = 1;
+//     dd($item->product_code->toArray()); // select * from product_code where product_id = 1
+// });
 
-Route::get('hasOneInverse', function () {
-    $item = ProductCode::find(2);
-    dd($item->product->toArray()); //
-});
+// Route::get('hasOneInverse', function () {
+//     $item = ProductCode::find(2);
+//     dd($item->product->toArray()); //
+// });
 
-Route::get('hasMany', function () {
-    $item = Category::find(1);
-    dd($item->product->toArray());
-});
+// Route::get('hasMany', function () {
+//     $item = Category::find(1);
+//     dd($item->product->toArray());
+// });
 
-Route::get('hasInverse', function () {
-    $item = Product::find(1);
-    dd($item->category->toArray());
-});
+// Route::get('hasInverse', function () {
+//     $item = Product::find(1);
+//     dd($item->category->toArray());
+// });
 
-Route::get('manyManyProducts', function () {
-});
+// Route::get('manyManyProducts', function () {
+// });
 
-Route::get('manyManyOrders', function () {
-});
+// Route::get('manyManyOrders', function () {
+// });
 
 
 
@@ -169,4 +176,4 @@ Route::get('manyManyOrders', function () {
 
 
 //phân quyền
-Route::get('/user1', [UserController::class, 'index'])->name('user1.index');
+// Route::get('/user1', [UserController::class, 'index'])->name('user1.index');

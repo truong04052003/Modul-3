@@ -35,17 +35,17 @@
       </a>
       <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="icons-bootstrap.html">
+          <a href="tel:08880902222" title="Gọi ngay">
             <i class="bi bi-circle"></i><span>Holine : 0343689757</span>
           </a>
         </li>
         <li>
-          <a href="icons-remix.html">
+          <a href="https://www.facebook.com/tranvantruong453.Dev">
             <i class="bi bi-circle"></i><span>Email : tranvantruong10b2@gmail.com</span>
           </a>
         </li>
         <li>
-          <a href="icons-boxicons.html">
+          <a href="https://www.google.com/maps/place/S%C3%A1o+Tr%C3%BAc+Thanh+Tr%C6%B0%E1%BB%9Dng/@16.9458654,107.0786152,17z/data=!3m1!4b1!4m5!3m4!1s0x3140c3abc27a0cad:0xaecafd0ec224fd81!8m2!3d16.9458603!4d107.0808039?hl=vi">
             <i class="bi bi-circle"></i><span>Địa chỉ : Sáo Trúc Thanh Trường</span>
           </a>
         </li>

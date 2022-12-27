@@ -13,7 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <div class="container-fluid px-4">
     @section('content')
-
+    <h1>Danh Mục Sản Phẩm</h1>
     {{-- Tìm kiếm --}}
     <div class="col-6">
       <form class="form-inline" action="" >
@@ -24,12 +24,11 @@
             </div>
           </div>
           <div class="col-4">
-            <button type="submit" class="btn btn-default">Tìm kiếm</button>
+            <button type="submit" class="btn btn-default bg-info">Tìm kiếm</button>
           </div>
         </div>
       </form>
     </div> <br>
-
     <table class="table">
       <a href="{{route('products.create')}}" class="btn btn-primary">Thêm sản phẩm</a>
       <a href="{{route('products.garbagecan')}}" class="btn btn-primary">Thùng rác</a>
@@ -41,6 +40,7 @@
           <th scope="col">Giá</th>
           <th scope="col">Thể loại</th>
           <th scope="col">Ảnh</th>
+          <th scope="col">Mô tả</th>
           <th scope="col" class="text-right">Hành động</th>
         </tr>
       </thead>
@@ -54,6 +54,7 @@
           <td>
             <img src="{{ asset('admin/uploads/'. $item->image) }}" alt="" width="130px" height="130px">
           </td>
+          <td>{{$item['description']}}</td>
 
           <td class="text-right">
             <form action="{{route('products.destroy',[$item->id])}}" method="post">

@@ -212,14 +212,10 @@
         <label>Enter the password</label>
       </div>
       
-      <a> <button type="submit">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Submit
-          </button>
-          </a>
+      <a><button type="submit">Submit</button></a>  <br> <br>
+      <div class="row align-items-center remember">
+        <input type="checkbox">Nhớ mật khẩu
+      </div>
     </form>
   </div>
 </body>

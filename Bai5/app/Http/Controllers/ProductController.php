@@ -32,10 +32,12 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required',
             'image' => 'required',
+            'description'=>'required',
         ], [
             'name.required' => 'Không được để trống',
             'price.required' => 'Không được để trống',
             'image.required' => 'Vui lòng chọn ảnh',
+            'description.required' => 'Vui lòng nhập mô tả'
         ]);
         if ($validator->fails()) {
             return redirect()->route('products.create')
@@ -96,6 +98,7 @@ class ProductController extends Controller
             $product->image = $new_image;
             $data['product_image'] = $new_image;
         }
+        $product->description = $request->description;
         $product->save();
         return redirect()->route('products.index');
     }

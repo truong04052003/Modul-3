@@ -16,14 +16,18 @@ use Illuminate\Support\Str;
 class ShopController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+
         $products = Product::all();
-        if($key = request()->key){
-            $products = Product::all()->where('name','like','%'.$key.'%');
+        $search = $request->input('product');
+        if ($search) {
+            $products = Product::where('name', 'LIKE', '%' . $search . '%')->get();
+        }
+        else{
+            $products = Product::get();
         }
         return view('shop.layouts.main', compact('products'));
-        
     }
     public function store($id)
     {
@@ -35,16 +39,14 @@ class ShopController extends Controller
             $cart[$id] = [
                 "name" => $product->name,
                 "price" => $product->price,
-                "quantity" => $product->quantity,
-                "category_id"=> $product->category_id,
+                "quantity" => 1,
                 'image' => $product->image,
             ];
         }
         session()->put('cart', $cart);
         $data = [];
         $data['cart'] = session()->has('cart');
-        return redirect()->route('shop.cart');
-      
+        return redirect()->route('cart-index');
     }
     public function cart()
     {
@@ -54,38 +56,31 @@ class ShopController extends Controller
             'products' => $products,
             'categories' => $categories,
         ];
-        return view('shop.includes.cart',$param);
+        return view('shop.includes.cart', $param);
     }
     public function show($id)
     {
-      
-        return view('shop.includes.show');
+        $product =Product::find($id);
+        return view('shop.includes.show',compact('product'));
     }
     public function update($id)
     {
-      
+        
     }
-    public function remove($id)
+    public function remove(Request $request)
     {
-        // if ($request->id) {
-        //     $cart = session()->get('cart');
-        //     if (isset($cart[$request->id])) {
-        //         unset($cart[$request->id]);
-        //         session()->put('cart', $cart);
-        //     }
-        //     session()->put('cart', $cart);
-        //     return response()->json(['status' => 'Xóa đơn hàng thành công']);
-        // }
+        if ($request->id) {
+            $cart = session()->get('cart');
+            if (isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+        }
     }
 
-    public function checkOuts($id)
+    public function checkOuts()
     {
-        return view('shop.checkout');
+        return view('shop.includes.checkout');
     }
-    public function order(Request $request)
-    {
-
-
-    }
-    
+ 
 }
