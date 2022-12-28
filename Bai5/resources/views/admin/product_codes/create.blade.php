@@ -17,11 +17,11 @@
             <h1>Thêm mã sản phẩm</h1>
         </div>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Code</label>
+          <label for="exampleInputEmail1" class="form-label">Mã sản phẩm</label>
           <input type="text" class="form-control" name="code" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">product_id</label>
+          <label for="exampleInputEmail1" class="form-label">Sản phẩm</label>
           <input type="text" class="form-control" name="product_id" aria-describedby="emailHelp">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

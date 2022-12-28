@@ -107,17 +107,17 @@
                                 $totalAll += $total;
                             @endphp
                             @php
-                            $totalphi = $details['price']/100
-                        @endphp
-                           @php
-                           $totalAllship = $totalAll + $totalphi;
-                       @endphp
+                                $totalphi = $details['price'] / 100;
+                            @endphp
+                            @php
+                                $totalAllship = $totalAll + $totalphi;
+                            @endphp
                             <td>{{ number_format($details['price']) }} VNĐ</td>
 
                             <td>
                                 {{ $details['quantity'] }}
                             </td>
-                            
+
                             {{-- ảnh --}}
                             <td class="">
                                 <div class="product-info">
@@ -139,17 +139,17 @@
                 @endif
                 <td colspan="2" class="hidden-xs">Tổng tiền hàng :</td>
                 <td class="hidden-xs text-center"><strong> {{ number_format($totalAll) }} VNĐ</strong></td>
-                
+
             </tbody>
             <td colspan="2" class="hidden-xs">Tổng tiền phí vận chuyển :</td>
             <td class="hidden-xs text-center"><strong> {{ number_format($totalphi) }} VNĐ</strong></td>
-          
+
             <tfoot>
                 <td colspan="2" class="hidden-xs">Tổng :</td>
                 <td class="hidden-xs text-center"><strong> {{ number_format($totalAllship) }} VNĐ</strong></td>
                 <tr>
                     <td><a href="{{ route('shop.index') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>
-                            Continue Shopping</a> <br><br>
+                            Quay lại trang chủ</a> <br><br>
                         <a href="{{ route('shop.checkOuts') }}" class="btn btn-primary"><i
                                 class="fa fa-angle-right"></i>
                             Thanh Toán</a>
