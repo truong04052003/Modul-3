@@ -204,19 +204,25 @@
 </style>
 
 <body>
-    <div class="login-box">
+    {{-- <div class="login-box">
         <h2>Login </h2>
         <form action="{{ route('admin.login') }}" method="post">
             @csrf
             <div class="user-box"><br>
                 <input type="text" name="email" placeholder="Nhập email của bạn">
                 <label>Email</label>
+                @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="user-box"><br>
                 <input type="password" name="password" placeholder="Nhập mật khẩu của bạn">
                 <label>Password</label>
+                @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
-           <a><button type="submit">Submit</button></a>  <br> <br>
+            <a><button type="submit">Submit</button></a> <br> <br>
 
         </form>
         <div class="other">
@@ -226,7 +232,47 @@
             <a href="{{ route('formregister') }}">Đăng ký</a>
         </div>
 
+    </div> --}}
+
+
+
+
+
+
+
+    <div class="login-box">
+        <h2>Login</h2>
+        <form action="{{ route('admin.login') }}" method="post">
+            @csrf
+            <div class="user-box"><br>
+                <input type="text" name="email" placeholder="Nhập email của bạn">
+                @error('email')
+                    <div style="color: rgb(255, 255, 255)">{{ $message }}</div> <br>
+                @enderror 
+                <label>Email</label><br>
+            </div>
+            <div class="user-box"><br>
+                <input type="password" name="password" placeholder="Nhập mật khẩu của bạn">
+                @error('password')
+                    <div style="color: rgb(255, 255, 255)">{{ $message }}</div> 
+                @enderror
+                <label>Password</label><br><br>
+            </div>
+            <div class="row align-items-center remember" style="color: rgb(255, 255, 255)">
+              <input type="checkbox" >Nhớ mật khẩu
+          </div> 
+          <a><button type="submit">Submit</button></a> <br> <br>
+                      
+        </form>
+        <div class="other">
+            <a class="btn submits frgt-pass" href="{{ route('show.forgetpass') }}">Quên mật khẩu</button>
+        </div> <br>
     </div>
+    
+
+
+
+
 </body>
 
 </html>

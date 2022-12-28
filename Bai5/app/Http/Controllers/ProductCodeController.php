@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ProductCode;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProductCodeController extends Controller
 {
@@ -17,18 +19,38 @@ class ProductCodeController extends Controller
 
     public function create()
     {
-        return view('admin.product_codes.create');
+        $items = Product::all();
+        return view('admin.product_codes.create', compact('items'));
     }
 
 
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'code' => 'required',
+        ], [
+            'code.required' => 'Không được để trống',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('product_codes.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
         $productcode = new ProductCode();
         $productcode->code = $request->code;
         $productcode->product_id = $request->product_id;
-        $productcode->save();
-
+       
+        try {
+            $productcode->save();
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return redirect()->route('product_codes.create')->with('error', 'Da co loi xay ra');
+        }
         return redirect()->route('product_codes.index');
+
+
+
+
     }
 
 
@@ -39,8 +61,8 @@ class ProductCodeController extends Controller
     public function edit($id)
     {
         $productcode = ProductCode::find($id);
-        // dd($product);
-        return view('admin.product_codes.edit', compact('productcode'));
+        $items = Product::all();
+        return view('admin.product_codes.edit', compact('productcode','items'));
     }
 
 

@@ -25,7 +25,10 @@ use App\Models\ProductCode;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+    //cập nhật giỏ hàng
+    Route::patch('/update-cart', [ShopController::class, 'update'])->name('update.cart');
+    //xóa khỏi giỏ hàng 
+    Route::delete('/remove-from-cart', [ShopController::class, 'remove'])->name('remove.cart');
 //SHOP
 Route::prefix('shop')->group(function () {
     //trang chính của shop
@@ -33,30 +36,15 @@ Route::prefix('shop')->group(function () {
 
     //xem chi tiết sản phẩm 
     Route::get('/showsanpham/{id}', [ShopController::class, 'show'])->name('showsanpham');
-     //hiển thị giỏ hàng
+    //hiển thị giỏ hàng
     Route::get('/cart', [ShopController::class, 'cart'])->name('cart-index');
     //thêm sản phẩm vào giỏ hàng
     Route::get('/add-to-cart/{id}', [ShopController::class, 'store'])->name('shop.add');
-    //cập nhật giỏ hàng
-    Route::put('/update-cart', [ShopController::class, 'update'])->name('update.cart');
-    //xóa khỏi giỏ hàng 
-    Route::delete('/remove-from-cart', [ShopController::class, 'remove'])->name('remove.cart');
+
     //thanh toán tiền 
     Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('shop.checkOuts');
     //tìm kiếm
     Route::get('/search', [ShopController::class, 'search'])->name('shop.search');
-
-});
-//Login shop 
-Route::prefix('shop')->group(function () {
-    //đăng kí shop
-    Route::get('/register', [ShopController::class, 'register'])->name('shop.register');
-    Route::post('/checkregister', [ShopController::class, 'checkregister'])->name('shop.checkregister');
-    //đăng nhập shop
-    Route::get('/login', [ShopController::class, 'login'])->name('shop.login');
-    Route::post('/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
-    //đăng xuất shop
-    Route::post('/shoplogout', [ShopController::class, 'logout'])->name('shoplogout');
 });
 
 
@@ -73,10 +61,8 @@ Route::prefix('admin')->group(function () {
     //quên mật khẩu
     Route::get('forget-password', [LoginController::class, 'forgetpass'])->name('show.forgetpass');
     Route::post('/email', [LoginController::class, 'quenmatkhau'])->name('quenmatkhau');
-
 });
-// //tìm kiếm admin
-// Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+
 
 
 //PRODUCT===========
@@ -134,13 +120,20 @@ Route::prefix('product_codes')->group(function () {
     Route::get('/{id}/edit', [ProductCodeController::class, 'edit'])->name('product_codes.edit');
     Route::put('/{id}', [ProductCodeController::class, 'update'])->name('product_codes.update');
     Route::delete('/{id}', [ProductCodeController::class, 'destroy'])->name('product_codes.destroy');
-    //thùng rác
-    // Route::get('/garbagecan', [ProductCodeController::class, 'garbagecan'])->name('products.garbagecan');
-    // Route::get('/restore/{id}', [ProductCodeController::class, 'restore'])->name('products.restore');
-    // Route::get('/deleteforever/{id}', [ProductCodeController::class, 'deleteforever'])->name('products.deleteforever');
 });
 
 
+// //Login shop 
+// Route::prefix('shop')->group(function () {
+//     //đăng kí shop
+//     Route::get('/register', [ShopController::class, 'register'])->name('shop.register');
+//     Route::post('/checkregister', [ShopController::class, 'checkregister'])->name('shop.checkregister');
+//     //đăng nhập shop
+//     Route::get('/login', [ShopController::class, 'login'])->name('shop.login');
+//     Route::post('/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
+//     //đăng xuất shop
+//     Route::post('/shoplogout', [ShopController::class, 'logout'])->name('shoplogout');
+// });
 
 
 // Route::get('hasOne', function () {

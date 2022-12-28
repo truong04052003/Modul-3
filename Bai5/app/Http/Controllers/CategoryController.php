@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -11,9 +12,6 @@ class CategoryController extends Controller
     public function index()
     {
         $items = Category::all();
-        // $items = DB::table('categories')->get();
-        // select * from categories
-        // dd($items);
         return view('admin.categories.index', compact('items'));
     }
 
@@ -26,11 +24,29 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ], [
+            'name.required' => 'Không được để trống',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('categories.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
         $category = new Category();
         $category->name = $request->name;
-        $category->save();
-
+        try {
+            $category->save();
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return redirect()->route('categories.create')->with('error', 'Da co loi xay ra');
+        }
         return redirect()->route('categories.index');
+
+
+
+     
     }
 
     public function show($id)

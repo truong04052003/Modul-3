@@ -35,9 +35,9 @@ class ProductController extends Controller
             'description'=>'required',
         ], [
             'name.required' => 'Không được để trống',
-            'price.required' => 'Không được để trống',
+            'price.required' => 'Vui lòng nhập giá',
             'image.required' => 'Vui lòng chọn ảnh',
-            'description.required' => 'Vui lòng nhập mô tả'
+            'description.required' => 'Không được để trống'
         ]);
         if ($validator->fails()) {
             return redirect()->route('products.create')
@@ -67,7 +67,7 @@ class ProductController extends Controller
             Log::error($e->getMessage());
             return redirect()->route('products.create')->with('error', 'Da co loi xay ra');
         }
-        return redirect()->route('products.index')->with('success', 'Luu thanh cong');
+        return redirect()->route('products.index');
 
         // $product->save();
         // return redirect()->route('products.index');
@@ -80,7 +80,8 @@ class ProductController extends Controller
     {
 
         $product = Product::find($id);
-        return view('admin.products.edit', compact('product'));
+        $items = Category::all();
+        return view('admin.products.edit', compact('product','items'));
     }
     public function update(Request $request, $id)
     {

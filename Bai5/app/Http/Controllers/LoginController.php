@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -26,6 +27,22 @@ class LoginController extends Controller
     }
     public function register(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:6',
+        ], [
+            'name.required' => 'Không được để trống',
+            'email.required' => 'Không được để trống',
+            'password.required' => 'Không được để trống',
+            'password.min' => 'Mật khẩu quá ngắn',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('formregister')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -37,6 +54,7 @@ class LoginController extends Controller
         } else {
             return redirect()->route('profile');
         }
+        
     }
 
     //đăng nhập
@@ -48,6 +66,19 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password' => 'required|min:6',
+        ], [
+            'email.required' => 'Không được để trống',
+            'password.required' => 'Không được để trống',
+            'password.min' => 'Mật khẩu quá ngắn',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('formlogin')
+                ->withErrors($validator)
+                ->withInput();
+        }
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if(Auth::user()->role == 0){
             return redirect()->route('products.index');

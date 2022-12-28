@@ -79,7 +79,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Họ</label>
-                        <input type="email" class="form-control" placeholder="Họ">
+                        <input type="text" class="form-control" placeholder="Họ">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Tên</label>
@@ -98,7 +98,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputCity">Email</label>
-                        <input type="text" class="form-control">
+                        <input type="email" class="form-control">
                     </div> <br>
                     <div class="form-group col-md-4">
                         <label for="inputState">Mã Voucher</label>
