@@ -14,47 +14,54 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
     <div class="container-fluid px-4">
-            <form action="{{ route('books.update', [$book->id]) }}" method="post" >
-                <div>
-                    <h1>Sửa sản phẩm</h1>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Tên sách</label>
-                    <input type="text" class="form-control" name="tensach" aria-describedby="emailHelp">
-    
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Mã sách</label>
-                    <input type="text" class="form-control" name="code" value="">
-    
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Tác giả</label>
-                    <input type="text" class="form-control" name="tacgia" value="">
-    
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Thể loại</label>
-                    <input type="text" class="form-control" name="theloai" value="">
-    
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Số trang</label>
-                    <input type="file" class="form-control" name="sotrang" value="">
-    
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Năm sản xuất</label>
-                    <input type="text" class="form-control" name="namsanxuat" value="">
-    
-                </div>
-    
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <a class="btn btn-danger btn-xs" href="{{ route('books.index') }}">Back</a>
-            </form>
+        <form action="{{ route('books.update', [$book->id]) }}" method="post">
+            @method('PUT')
+            @csrf
+            <div>
+                <h1>Sửa sản phẩm</h1>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Tên sách</label>
+                <input type="text" class="form-control" name="tensach" value="{{ $book->tensach }}">
 
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mã sách</label>
+                <input type="text" class="form-control" name="code" value="{{ $book->code }}">
+            </div><br>
 
+            <div class="mb-3">
+            <select name="tacgia" class="form-control">
+                <option name="tacgia">Chọn tác giả</option>
+                <option name="tacgia">Lâm Hoàng Trúc</option>
+                <option name="tacgia">Lê Vũ Kiến Duy</option>
+                <option name="tacgia">Comicola Studio</option>
+                <option name="tacgia">Nguyễn Huỳnh Bảo Châu</option>
+            </select>
         </div>
-    </body>
 
-    </html>
+            <div class="mb-3">
+                <label class="form-label">Thể loại</label>
+                <input type="text" class="form-control" name="theloai" value="{{ $book->theloai }}">
+
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Số trang</label>
+                <input type="text" class="form-control" name="sotrang" value="{{ $book->sotrang }}">
+
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Năm sản xuất</label>
+                <input type="text" class="form-control" name="namsanxuat" value="{{ $book->namsanxuat }}">
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-danger btn-xs" href="{{ route('books.index') }}">Back</a>
+        </form>
+
+
+    </div>
+</body>
+
+</html>

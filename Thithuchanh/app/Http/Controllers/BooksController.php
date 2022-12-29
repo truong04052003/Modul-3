@@ -11,7 +11,10 @@ class BooksController extends Controller
  
     public function index()
     {
-        $items = Books::all();
+        $items = Books::paginate(4);
+        if($key =request()->key){
+            $items = Books::all()->where('tensach','like','%'.$key.'%');
+        }
         return view('books.index', compact('items'));
     }
 
@@ -81,12 +84,22 @@ class BooksController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $book = Books::find($id);
+        $book->tensach = $request->tensach;
+        $book->code = $request->code;
+        $book->tacgia = $request->tacgia;
+        $book->theloai = $request->theloai;
+        $book->sotrang = $request->sotrang;
+        $book->namsanxuat = $request->namsanxuat;
+        $book->save();
+        return redirect()->route('books.index');
     }
 
  
     public function destroy($id)
     {
-        //
+        $book = Books::find($id);
+        $book->delete();
+        return redirect()->route('books.index');
     }
 }
