@@ -25,10 +25,11 @@ use App\Models\ProductCode;
 | contains the "web" middleware group. Now create something great!
 |
 */
-    //cập nhật giỏ hàng
-    Route::patch('/update-cart', [ShopController::class, 'update'])->name('update.cart');
-    //xóa khỏi giỏ hàng 
-    Route::delete('/remove-from-cart', [ShopController::class, 'remove'])->name('remove.cart');
+//giỏ hàng
+Route::get('cart', [ShopController::class,'cart'])->name('show.cart');
+Route::get('add-to-cart/{id}', [ShopController::class,'addToCart'])->name('add-to-cart');
+Route::patch('update-cart', [ShopController::class,'update1'])->name('update-cart');
+Route::delete('remove-from-cart', [ShopController::class,'remove'])->name('remove-from-cart');
 //SHOP
 Route::prefix('shop')->group(function () {
     //trang chính của shop
@@ -36,11 +37,6 @@ Route::prefix('shop')->group(function () {
 
     //xem chi tiết sản phẩm 
     Route::get('/showsanpham/{id}', [ShopController::class, 'show'])->name('showsanpham');
-    //hiển thị giỏ hàng
-    Route::get('/cart', [ShopController::class, 'cart'])->name('cart-index');
-    //thêm sản phẩm vào giỏ hàng
-    Route::get('/add-to-cart/{id}', [ShopController::class, 'store'])->name('shop.add');
-
     //thanh toán tiền 
     Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('shop.checkOuts');
     //tìm kiếm
@@ -48,7 +44,7 @@ Route::prefix('shop')->group(function () {
 });
 
 
-//Login admin
+//Login admin và shop
 Route::prefix('admin')->group(function () {
     //đăng kí
     Route::get('/register', [LoginController::class, 'formregister'])->name('formregister');
@@ -108,6 +104,7 @@ Route::prefix('orders')->group(function () {
     Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
     Route::put('/{id}', [OrderController::class, 'update'])->name('orders.update');
     Route::delete('/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
+    Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('order.detail');
 });
 
 //PRODUCTCODE
@@ -122,18 +119,6 @@ Route::prefix('product_codes')->group(function () {
     Route::delete('/{id}', [ProductCodeController::class, 'destroy'])->name('product_codes.destroy');
 });
 
-
-// //Login shop 
-// Route::prefix('shop')->group(function () {
-//     //đăng kí shop
-//     Route::get('/register', [ShopController::class, 'register'])->name('shop.register');
-//     Route::post('/checkregister', [ShopController::class, 'checkregister'])->name('shop.checkregister');
-//     //đăng nhập shop
-//     Route::get('/login', [ShopController::class, 'login'])->name('shop.login');
-//     Route::post('/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
-//     //đăng xuất shop
-//     Route::post('/shoplogout', [ShopController::class, 'logout'])->name('shoplogout');
-// });
 
 
 // Route::get('hasOne', function () {

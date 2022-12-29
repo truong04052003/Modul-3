@@ -64,7 +64,7 @@
                                 <li><a href="https://zalo.me/0343689757">Liên hệ</a></li>
                             </ul>
                             <ul class="navbar_user">
-                                <a href="{{ route('cart-index') }}" class="bg-dark text-white ">
+                                <a href="" class="bg-dark text-white ">
                                     <div class="box-cart">
                                         <i class="iconnewglobal-cart"></i>
                                         <span class="cart-number"></span>
@@ -138,7 +138,7 @@
 
                         <div>
                             <a href="{{ route('shop.index') }}" class="btn btn-primary">Quay lại </a>
-                            <a href="{{ route('shop.add', $product->id) }}"class="btn btn-danger">Thêm vào giỏ
+                            <a href="{{ route('add-to-cart', $product->id) }}"class="btn btn-danger">Thêm vào giỏ
                                 hàng</a>
                         </div><br>
 

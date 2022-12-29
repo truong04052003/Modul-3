@@ -48,36 +48,71 @@ class ShopController extends Controller
         $data['cart'] = session()->has('cart');
         return redirect()->route('cart-index');
     }
-    public function cart()
-    {
-        $products = Product::all();
-        $categories = Category::all();
-        $param = [
-            'products' => $products,
-            'categories' => $categories,
-        ];
-        return view('shop.includes.cart', $param);
-    }
+   //view giỏ hàng
+   public function cart()
+   {
+       return view('shop.includes.cart');
+   }
+   //thêm vào giỏ hàng
+   public function addToCart($id)
+   {
+       $product = Product::find($id);
+       if (!$product) {
+           abort(404);
+       }
+       $cart = session()->get('cart');
+       if (!$cart) {
+           $cart = [
+               $id => [
+                   "name" => $product->name,
+                   "quantity" => 1,
+                   "price" => $product->price,
+                   "image" => $product->image
+               ]
+           ];
+           session()->put('cart', $cart);
+           return redirect()->back();
+       }
+       if (isset($cart[$id])) {
+           $cart[$id]['quantity']++;
+           session()->put('cart', $cart);
+           return redirect()->back();
+       }
+       $cart[$id] = [
+           "name" => $product->name,
+           "quantity" => 1,
+           "price" => $product->price,
+           "image" => $product->image
+       ];
+       session()->put('cart', $cart);
+       return redirect()->back();
+   }
+   //cập nhật giỏ hàng
+   public function update1(Request $request)
+   {
+       if ($request->id and $request->quantity) {
+           $cart = session()->get('cart');
+           $cart[$request->id]["quantity"] = $request->quantity;
+           session()->put('cart', $cart);
+       }
+   }
+   //xóa giỏ hàng
+   public function remove(Request $request)
+   {
+       if ($request->id) {
+           $cart = session()->get('cart');
+           if (isset($cart[$request->id])) {
+               unset($cart[$request->id]);
+               session()->put('cart', $cart);
+           }
+       }
+   }
     public function show($id)
     {
+        // dd(1);
         $product =Product::find($id);
         return view('shop.includes.show',compact('product'));
     }
-    public function update($id)
-    {
-        
-    }
-    public function remove(Request $request)
-    {
-        if ($request->id) {
-            $cart = session()->get('cart');
-            if (isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-        }
-    }
-
     public function checkOuts()
     {
         return view('shop.includes.checkout');

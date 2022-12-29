@@ -12817,9 +12817,8 @@
                 </form>
 
                 <div class="col text-center">
-                    <ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked"
-                            data-filter="{{route('shop.index')}}" href="{{route('shop.index')}}">Liên quan</li>
+                    <ul class="">
+                        <a href="{{route('shop.index')}}"><li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked">Liên quan</li></a>
                         <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
                             data-filter=".women">Mới nhất</li>
                         <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
@@ -12859,7 +12858,7 @@
                                     </div>
 
                                 </div>
-                                <div class="red_button add_to_cart_button"><a href="{{route('shop.add',$product->id)}}">Giỏ
+                                <div class="red_button add_to_cart_button"><a href="{{route('add-to-cart',$product->id)}}">Giỏ
                                         hàng</a></div>
                             </div>
                         @endforeach

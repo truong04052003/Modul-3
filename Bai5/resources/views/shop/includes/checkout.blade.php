@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Thanh toán</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('shop/styles/bootstrap4/bootstrap.min.css') }}">
     <link href="{{ asset('shop/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet"
@@ -21,7 +21,7 @@
     .container.pt-4 {
         border: 1px solid black;
         width: 700px;
-        height: 600px;
+        height: 630px;
         margin: 117px 0px 0px 396px;
         border-bottom: solid;
     }
@@ -52,7 +52,7 @@
                                 <li><a href="https://zalo.me/0343689757">Liên hệ</a></li>
                             </ul>
                             <ul class="navbar_user">
-                                <a href="{{ route('cart-index') }}" class="bg-dark text-white ">
+                                <a href="{{ route('shop.index') }}" class="bg-dark text-white ">
                                     <div class="box-cart">
                                         <i class="iconnewglobal-cart"></i>
                                         <span class="cart-number"></span>
@@ -107,15 +107,15 @@
                             <option>Đơn hàng từ 200k - Tối đa 25k ( Sắp hết hạn : Còn 12 giờ)</option>
                             <option>Giảm 50%</option>
                             <option>Giảm 10%</option>
-                        </select>
+                        </select> <br>
                     </div>
 
                     <select class="form-control">
                         <option>Giới tính</option>
                         <option>Nam</option>
                         <option>Nữ</option>
-                    </select> <br>
-                    <br>
+                    </select> 
+                    <br><br><br>
                     <div class="form-group">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -132,7 +132,7 @@
                 </a>
                 <br><br>
                 <td>
-                    <a href="{{ route('cart-index') }}" class="btn btn-warning"><i></i> Quay lại giỏ hàng</a>
+                    <a href="{{ route('shop.index') }}" class="btn btn-warning"><i></i> Quay lại giỏ hàng</a>
                 </td>
             </form>
 

@@ -21,15 +21,13 @@
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenu">
 
-                                        <a class="dropdown-item" href="{{ route('formregister') }}">Đăng Ký</a>
-                                        <a class="dropdown-item" href="{{ route('logout') }}">Đăng nhập</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}">Đăng Xuất</a>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                         <ul class="navbar_user">
-                            <a href="{{ route('cart-index') }}" class="bg-dark text-white ">
+                            <a href="{{ route('show.cart') }}" class="bg-dark text-white ">
                                 <div class="box-cart">
                                     <i class="iconnewglobal-cart"></i>
                                     <span class="cart-number"></span>

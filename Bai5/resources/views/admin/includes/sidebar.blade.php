@@ -33,14 +33,14 @@
       <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-gem"></i><span>Thông tin liên hệ</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <ul id="icons-nav" class="nav-content collapse" >
         <li>
           <a href="tel:08880902222" title="Gọi ngay">
             <i class="bi bi-circle"></i><span>Holine : 0343689757</span>
           </a>
         </li>
         <li>
-          <a href="https://www.facebook.com/tranvantruong453.Dev">
+          <a href="">
             <i class="bi bi-circle"></i><span>Email : tranvantruong10b2@gmail.com</span>
           </a>
         </li>
@@ -50,7 +50,7 @@
           </a>
         </li>
       </ul>
-    </li><!-- End Icons Nav -->
+    </li>
 
     <li class="nav-heading">Pages</li>
 
@@ -59,14 +59,14 @@
         <i class="bi bi-person"></i>
         <span>Zalo</span>
       </a>
-    </li><!-- End Profile Page Nav -->
+    </li>
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="">
+      <a class="nav-link collapsed" href="http://localhost/Modul-3/Laravel/Bai5/public/products/garbagecan">
         <i class="bi bi-question-circle"></i>
         <span>Thùng Rác</span>
       </a>
-    </li><!-- End F.A.Q Page Nav -->
+    </li>
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="pages-contact.html">
@@ -81,7 +81,7 @@
         <span>Register</span>
       </a>
     </li>
-
+    
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="pages-error-404.html">
