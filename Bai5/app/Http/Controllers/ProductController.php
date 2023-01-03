@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+
 
 
 class ProductController extends Controller

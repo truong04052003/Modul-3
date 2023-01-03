@@ -204,36 +204,6 @@
 </style>
 
 <body>
-    {{-- <div class="login-box">
-        <h2>Login </h2>
-        <form action="{{ route('admin.login') }}" method="post">
-            @csrf
-            <div class="user-box"><br>
-                <input type="text" name="email" placeholder="Nhập email của bạn">
-                <label>Email</label>
-                @error('email')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="user-box"><br>
-                <input type="password" name="password" placeholder="Nhập mật khẩu của bạn">
-                <label>Password</label>
-                @error('password')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <a><button type="submit">Submit</button></a> <br> <br>
-
-        </form>
-        <div class="other">
-            <a class="btn submits frgt-pass" href="{{ route('show.forgetpass') }}">Quên mật khẩu</button>
-        </div> <br>
-        <div>
-            <a href="{{ route('formregister') }}">Đăng ký</a>
-        </div>
-
-    </div> --}}
-
 
 
 

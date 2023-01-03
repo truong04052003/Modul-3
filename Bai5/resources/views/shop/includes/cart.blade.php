@@ -48,7 +48,7 @@
                                 <input type="number" value="{{ $details['quantity'] }}"
                                     class="form-control quantity" />
                             </td>
-                            <td data-th="Subtotal" class="text-center">{{ $details['price'] * $details['quantity'] }}đ
+                            <td data-th="Subtotal" class="text-center">{{ number_format($details['price'] * $details['quantity']) }} VNĐ
                             </td>
                             <td class="actions" data-th="">
                                 <button class="update-cart" data-id="{{ $id }}"><i
