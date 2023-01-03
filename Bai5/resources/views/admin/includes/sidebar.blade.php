@@ -29,6 +29,10 @@
       <a class="nav-link collapsed" href="{{route('product_codes.index')}}">
         <i class="bi bi-bar-chart"></i><span>Mã Sản Phẩm</span><i></i>
       </a>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('group.index')}}">
+          <i class="bi bi-bar-chart"></i><span>Nhóm quyền</span><i></i>
+        </a>
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-gem"></i><span>Thông tin liên hệ</span><i class="bi bi-chevron-down ms-auto"></i>

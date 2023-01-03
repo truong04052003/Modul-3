@@ -29,7 +29,7 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-        // // Validation 
+        // dd(1);
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'price' => 'required',
@@ -50,18 +50,18 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->price = $request->price;
+        $product->description = $request->description;
         $product->category_id = $request->category_id;
         if ($request->hasFile('image')) {
             $get_image = $request->file('image');
             $path = 'admin/uploads/';
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+            $new_image = $name_image . '.' . $get_image->getClientOriginalExtension();
             $get_image->move($path, $new_image);
             $product->image = $new_image;
             $data['product_image'] = $new_image;
         }
-
         try {
             $product->save(); //throw new Exection('Co loi xay ra');
         } catch (\Exception $e) {

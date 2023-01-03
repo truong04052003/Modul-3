@@ -29,7 +29,7 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary sm deleteIcon">Submit</button>
                 <a class="btn btn-danger btn-xs" href="{{ route('categories.index') }}">Back</a>
             </form>
 

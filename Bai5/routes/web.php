@@ -8,7 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductCodeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\GroupController;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
@@ -26,10 +26,10 @@ use App\Models\ProductCode;
 |
 */
 //giỏ hàng
-Route::get('cart', [ShopController::class,'cart'])->name('show.cart');
-Route::get('add-to-cart/{id}', [ShopController::class,'addToCart'])->name('add-to-cart');
-Route::patch('update-cart', [ShopController::class,'update1'])->name('update-cart');
-Route::delete('remove-from-cart', [ShopController::class,'remove'])->name('remove-from-cart');
+Route::get('cart', [ShopController::class, 'cart'])->name('show.cart');
+Route::get('add-to-cart/{id}', [ShopController::class, 'addToCart'])->name('add-to-cart');
+Route::patch('update-cart', [ShopController::class, 'update1'])->name('update-cart');
+Route::delete('remove-from-cart', [ShopController::class, 'remove'])->name('remove-from-cart');
 //SHOP
 Route::prefix('shop')->group(function () {
     //trang chính của shop
@@ -155,3 +155,16 @@ Route::prefix('product_codes')->group(function () {
 
 //phân quyền
 // Route::get('/user1', [UserController::class, 'index'])->name('user1.index');
+
+
+Route::prefix('group')->group(function () {
+    Route::get('/', [GroupController::class, 'index'])->name('group.index');
+    Route::get('/create', [GroupController::class, 'create'])->name('group.create');
+    Route::post('/', [GroupController::class, 'store'])->name('group.store');
+    Route::get('/edit/{id}', [GroupController::class, 'edit'])->name('group.edit');
+    Route::put('/update/{id}', [GroupController::class, 'update'])->name('group.update');
+    Route::delete('destroy/{id}', [GroupController::class, 'destroy'])->name('group.destroy');
+    // trao quyền
+    Route::get('/detail/{id}', [GroupController::class, 'detail'])->name('group.detail');
+    Route::put('/group_detail/{id}', [GroupController::class, 'group_detail'])->name('group.group_detail');
+});
