@@ -36,7 +36,8 @@
         </div> <br>
         <table class="table">
 
-            <a href="{{ route('books.create') }}" class="btn btn-primary">Thêm sách</a><br><br>
+            <a href="{{ route('books.create') }}" class="btn btn-primary">Thêm sách</a>
+            <a href="{{ route('books.excel') }}" class="btn btn-primary">Xuất file</a><br><br>
             <thead>
 
                 <tr>

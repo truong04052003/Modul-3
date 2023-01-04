@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Exports\BooksExport;
+use Maatwebsite\Excel\Facades\Excel;
 class BooksController extends Controller
 {
  
@@ -101,5 +103,9 @@ class BooksController extends Controller
         $book = Books::find($id);
         $book->delete();
         return redirect()->route('books.index');
+    }
+    public function excel()
+    {
+        return Excel::download(new BooksExport,'books.xlsx');
     }
 }
