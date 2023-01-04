@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use App\Exports\ProductExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
@@ -76,7 +78,8 @@ class ProductController extends Controller
     }
     public function show($id)
     {
-        $item = Product::find($id);
+        $productshow = Product::findOrFail($id);
+        return view('admin.products.show', compact('productshow') );
     }
     public function edit($id)
     {
@@ -141,5 +144,8 @@ class ProductController extends Controller
             ->orwhere('price', $request->search)
             ->get();
         return view('admin.product.search', compact('products'));
+    }
+    public function Excel(){
+        return Excel::download(new ProductExport,'users.xlsx');
     }
 }

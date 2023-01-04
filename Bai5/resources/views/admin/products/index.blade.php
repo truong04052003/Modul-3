@@ -31,7 +31,8 @@
     </div> <br>
     <table class="table">
       <a href="{{route('products.create')}}" class="btn btn-primary">Thêm sản phẩm</a>
-      <a href="{{route('products.garbagecan')}}" class="btn btn-primary">Thùng rác</a>
+      <a href="{{route('products.garbagecan')}}" class="btn btn-primary">Thùng rác</a> 
+      <a href="{{route('products.Excel') }}" class="btn btn-primary">Xuất file</a>
       <thead>
         
         <tr>
@@ -52,15 +53,16 @@
           <td>{{number_format($item['price']) }} </td>
           <td>{{$item->category->name}}</td>
           <td>
-            <img src="{{ asset('admin/uploads/'. $item->image) }}" alt="" width="130px" height="130px">
+            <img src="{{ asset('admin/uploads/'. $item->image) }}" alt="" width="180px" height="180px">
           </td>
-          <td>{{$item['description']}}</td>
+          {{-- <td>{{$item['description']}}</td> --}}
+          <td>  <a class="btn btn-warning" href="{{ route('products.show', $item->id) }}">Chi tiết</a></td>
 
           <td class="text-right">
             <form action="{{route('products.destroy',[$item->id])}}" method="post">
               @method('DELETE')
               @csrf
-              <a href="{{route('products.edit',[$item->id])}}" class="btn btn-success">Edit</a> <br><br>
+              <a href="{{route('products.edit',[$item->id])}}" class="btn btn-success">Edit</a>
               <button onclick="return confirm('Bạn có chắc chắn xóa không?');" class="btn btn-danger">Delete</button>
              
             </form>

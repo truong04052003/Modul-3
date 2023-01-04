@@ -77,7 +77,9 @@ Route::prefix('products')->group(function () {
     Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
     //tìm kiếm 
     Route::post('/search', [ProductController::class, 'search'])->name('products.search');
+    //xuất file excel
 });
+Route::get('/exportExcel', [ProductController::class, 'Excel'])->name('products.Excel');
 //CATEGORY===================
 Route::prefix('categories')->group(function () {
     //nối route với controller

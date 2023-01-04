@@ -5,33 +5,33 @@
     <li class="nav-item">
       <a class="nav-link " href="{{route('products.index')}}">
         <i class="bi bi-grid"></i>
-        <span>Trang chủ</span>
+        <span>Trang tổng quan</span>
       </a>
     </li>
 
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="{{route('products.index')}}">
-        <i class="bi bi-journal-text"></i><span>Sản Phẩm</span><i></i>
+        <i class="bi bi-journal-text"></i><span>Quản lý sản phẩm</span><i></i>
       </a>
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="{{route('categories.index')}}">
-        <i class="bi bi-menu-button-wide"></i><span>Thể loại</span><i></i>
+        <i class="bi bi-menu-button-wide"></i><span>Quản lý thể loại</span><i></i>
       </a>
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="{{route('orders.index')}}">
-        <i class="bi bi-layout-text-window-reverse"></i><span>Đơn hàng</span><i></i>
+        <i class="bi bi-layout-text-window-reverse"></i><span>Quản lý đơn hàng</span><i></i>
       </a>
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="{{route('product_codes.index')}}">
-        <i class="bi bi-bar-chart"></i><span>Mã Sản Phẩm</span><i></i>
+        <i class="bi bi-bar-chart"></i><span>Quản lý mã sản phẩm</span><i></i>
       </a>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('group.index')}}">
-          <i class="bi bi-bar-chart"></i><span>Nhóm quyền</span><i></i>
+          <i class="bi bi-bar-chart"></i><span>Quản lý nhóm quyền</span><i></i>
         </a>
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">

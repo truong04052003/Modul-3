@@ -39,7 +39,7 @@ class ProductCodeController extends Controller
         $productcode = new ProductCode();
         $productcode->code = $request->code;
         $productcode->product_id = $request->product_id;
-       
+
         try {
             $productcode->save();
         } catch (\Exception $e) {
@@ -47,10 +47,6 @@ class ProductCodeController extends Controller
             return redirect()->route('product_codes.create')->with('error', 'Da co loi xay ra');
         }
         return redirect()->route('product_codes.index');
-
-
-
-
     }
 
 
@@ -62,10 +58,8 @@ class ProductCodeController extends Controller
     {
         $productcode = ProductCode::find($id);
         $items = Product::all();
-        return view('admin.product_codes.edit', compact('productcode','items'));
+        return view('admin.product_codes.edit', compact('productcode', 'items'));
     }
-
-
     public function update(Request $request, $id)
     {
         $productcode = ProductCode::find($id);
@@ -74,8 +68,6 @@ class ProductCodeController extends Controller
         $productcode->save();
         return redirect()->route('product_codes.index');
     }
-
-
     public function destroy($id)
     {
         ProductCode::find($id)->delete();
