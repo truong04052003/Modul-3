@@ -148,4 +148,7 @@ class ProductController extends Controller
     public function Excel(){
         return Excel::download(new ProductExport,'users.xlsx');
     }
+    public function trangchu(){
+        return view('admin.products.trangchu');
+    }
 }

@@ -41,7 +41,7 @@
           <th scope="col">Giá</th>
           <th scope="col">Thể loại</th>
           <th scope="col">Ảnh</th>
-          <th scope="col">Mô tả</th>
+          {{-- <th scope="col">Mô tả</th> --}}
           <th scope="col" class="text-right">Hành động</th>
         </tr>
       </thead>
@@ -56,14 +56,14 @@
             <img src="{{ asset('admin/uploads/'. $item->image) }}" alt="" width="180px" height="180px">
           </td>
           {{-- <td>{{$item['description']}}</td> --}}
-          <td>  <a class="btn btn-warning" href="{{ route('products.show', $item->id) }}">Chi tiết</a></td>
 
           <td class="text-right">
             <form action="{{route('products.destroy',[$item->id])}}" method="post">
               @method('DELETE')
               @csrf
+          <a class="btn btn-warning" href="{{ route('products.show', $item->id) }}">Chi tiết</a>
               <a href="{{route('products.edit',[$item->id])}}" class="btn btn-success">Edit</a>
-              <button onclick="return confirm('Bạn có chắc chắn xóa không?');" class="btn btn-danger">Delete</button>
+              <button onclick="return confirm('Bạn có chắc chắn xóa không?');" class="btn btn-danger">Xóa</button>
              
             </form>
           </td>

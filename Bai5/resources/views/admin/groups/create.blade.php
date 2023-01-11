@@ -10,18 +10,17 @@
                                 <nav aria-label="breadcrumb">
                                 </nav>
                                 @section('content')
-                                <h1 class="page-title">Tạo Tên Quyền</h1>
-                            </header>
-                            <hr>
-                            <div class="panel-body">
+                                    <h1 class="page-title">Tạo Tên Quyền</h1>
+                                </header>
+                                <hr>
+                                <div class="panel-body">
                                     <form role="form" class="form-horizontal " action="{{ route('group.store') }}"
                                         method="POST">
                                         @csrf
                                         <div class="form-group has-warning">
                                             <label class="col-lg-2">Tên Quyền</label><br><br>
                                             <div class="col-lg-8">
-                                                <input type="text" value="" name="name"
-                                                    placeholder=""
+                                                <input type="text" value="" name="name" placeholder=""
                                                     class=" @error('name') is-invalid @enderror form-control ">
                                                 @error('name')
                                                     <div class="text text-danger">{{ $message }}</div>

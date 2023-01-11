@@ -59,6 +59,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/email', [LoginController::class, 'quenmatkhau'])->name('quenmatkhau');
 });
 
+//trang tổng quan
+Route::get('index', [ProductController::class, 'trangchu'])->name('trangchu');
 
 
 //PRODUCT===========

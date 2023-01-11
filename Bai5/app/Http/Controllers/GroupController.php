@@ -31,9 +31,6 @@ class GroupController extends Controller
     public function store(Request $request)
     {
 
-        // $notification = [
-        //     'addgroup' => 'Thêm Tên Quyền Thành Công!',
-        // ];
         $group = new Group();
         $group->name = $request->name;
         $group->save();

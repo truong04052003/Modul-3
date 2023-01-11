@@ -3,7 +3,7 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
-      <a class="nav-link " href="{{route('products.index')}}">
+      <a class="nav-link " href="{{route('trangchu')}}">
         <i class="bi bi-grid"></i>
         <span>Trang tổng quan</span>
       </a>

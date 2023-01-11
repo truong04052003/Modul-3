@@ -33,7 +33,7 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>id</th>
+                                {{-- <th>id</th> --}}
                                 <th>Tên</th>
                                 {{-- <th>Người đảm nhận</th> --}}
                                 <th>Tùy Chỉnh</th>
@@ -42,7 +42,7 @@
                         <tbody id="myTable">
                             @foreach ($groups as $key => $group)
                                 <tr data-expanded="true" class="item-{{ $group->id }}">
-                                    <td>{{ $key + 1 }}</td>
+                                    {{-- <td>{{ $key + 1 }}</td> --}}
                                     <td>{{ $group->id }}</td>
                                     <td>{{ $group->name }} </td>
                                     {{-- <td>Hiện có {{ count($group->users) }} người</td> --}}
