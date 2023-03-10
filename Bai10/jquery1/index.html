@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <div class="row">
+                 
+                    <div class="col-lg-2">
+                        <button class="btn btn-primary add-btn" type="button">Add new</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-12">
+                <table class="table">
+                    <thead>
+                        <th>ID</th>
+                        <th>TENSANPHAM</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody id="ket_qua">
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model ADD NEW -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm sản phẩm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">TENSANPHAM</label>
+                            <input type="text" class="form-control" id="TENSANPHAM" >
+                            <div id="emailHelp" class="form-text"></div>
+                        </div>
+                    
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSave">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal delete -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xóa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let editID = 0;
+        function getList() {
+            let options = {
+                url: 'http://127.0.0.1:8000/api/products',
+                method: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    let html = '';
+                    $.each(response, function (key, value) {
+                        html += '<tr>';
+                        html += '<td>' + value.ID + '</td>';
+                        html += '<td>' + value.TENSANPHAM + '</td>';
+                        html += '<td>';
+                        html += '<button class="btn btn-info me-1 edit-btn" data-id="' + value.ID + '">Edit</button>';
+                        html += '<button class="btn btn-danger delete-btn" data-id="' + value.ID + '">Delete</button>';
+                        html += '</td>';
+                        html += '</tr>';
+                    });
+                    $('#ket_qua').html(html);
+                }
+            }
+            $.ajax(options);
+        }
+
+        getList();
+
+        // Bat su kien nhan nut save
+        $('#btnSave').on('click', function () {
+            // validate form
+            let TENSANPHAM = $('#TENSANPHAM').val();
+            // goi ajax luu vao server
+            if (editID){
+                var options = {
+                    url: 'http://127.0.0.1:8000/api/products/'+editID,
+                    method: 'PUT',
+                    dataType: 'json',
+                    data : {
+                        name :TENSANPHAM,
+                        category_id : 3
+                    },
+                    success: function (response) {
+                        getList();
+                        $('#addModal').modal('hide');
+                        editID = 0;
+
+                    }
+                }
+            }else{
+                var options = {
+                    url: 'http://127.0.0.1:8000/api/products/',
+                    method: 'POST',
+                    dataType: 'json',
+                    data : {
+                        name :TENSANPHAM,
+                        category_id : 3
+                    },
+                    success: function (response) {
+                        getList();
+                        $('#addModal').modal('hide');
+                        editID = 0;
+
+                    }
+                }
+            }
+            
+            $.ajax(options);
+            // alert('save form')
+        })
+
+        // Bat su kien nhan nut them moi
+        $('.add-btn').on('click', function () {
+            // goi modal
+            $('#addModal').modal('show');
+        })
+
+
+        // Bat su kien sau khi ajax goi
+        $('body').on('click', '.edit-btn', function () {
+            //lay id
+            let id = $(this).data('id');
+            editID = id;
+            // Goi ajax
+            let options = {
+                url: 'http://127.0.0.1:8000/api/products/'+id,
+                method: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    // Dua vao cac o input trong form
+                    $('#TENSANPHAM').val(response.TENSANPHAM);
+                }
+            }
+            $.ajax(options);
+            
+
+            // Goi modal
+            $('#addModal').modal('show');
+            // alert('edit: ' + id)
+        });
+
+        // Bat su kien sau khi ajax goi
+        $('body').on('click', '.delete-btn', function () {
+            // Lay id
+            let id = $(this).data('id');
+            alert('delete: ' + id)
+            // Dua vao cac o input trong form
+            // Goi modal
+            $('#deleteModal').modal('show');
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>
